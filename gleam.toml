@@ -8,6 +8,7 @@ target = "javascript"
 #
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "Crowdhailer", repo = "plinth" }
+gleam = ">= 0.32.0"
 # links = [{ title = "Website", href = "https://gleam.run" }]
 
 [dependencies]
@@ -15,4 +16,4 @@ gleam_stdlib = "~> 0.29"
 gleam_javascript = "~> 0.4"
 
 [dev-dependencies]
-gleeunit = "~> 0.10"
+gleeunit = "~> 1.0"

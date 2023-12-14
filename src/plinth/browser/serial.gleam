@@ -1,5 +1,6 @@
-import gleam/javascript/array.{Array}
-import gleam/javascript/promise.{Promise}
+import gleam/javascript/array.{type Array}
+import gleam/javascript/promise.{type Promise}
+
 pub type SerialPort
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort
@@ -8,7 +9,7 @@ pub fn request_port() -> Promise(Result(SerialPort, Nil))
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Serial/getPorts
 @external(javascript, "../../serial_ffi.mjs", "getPorts")
-pub fn get_ports() -> Promise(Result(List(SerialPort), Nil))
+pub fn get_ports() -> Promise(Result(Array(SerialPort), Nil))
 
 // https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/getInfo
 @external(javascript, "../../serial_ffi.mjs", "getInfo")
@@ -20,4 +21,7 @@ pub fn open(port: SerialPort, baud_rate: Int) -> Promise(Result(Nil, Nil))
 
 // https://developer.mozilla.org/en-US/docs/Web/API/SerialPort#reading_data_from_a_port
 @external(javascript, "../../serial_ffi.mjs", "read")
-pub fn read(port: SerialPort, callback: fn(BitString) -> Nil) -> Promise(Result(Nil, Nil))
+pub fn read(
+  port: SerialPort,
+  callback: fn(BitArray) -> Nil,
+) -> Promise(Result(Nil, Nil))

@@ -1,7 +1,6 @@
-import gleam/javascript/array.{Array}
-import plinth/browser/element.{Element}
-import plinth/browser/event.{Event}
-
+import gleam/javascript/array.{type Array}
+import plinth/browser/element.{type Element}
+import plinth/browser/event.{type Event}
 
 @external(javascript, "../../document_ffi.mjs", "querySelector")
 pub fn query_selector(selector: String) -> Result(Element, Nil)

@@ -1,4 +1,4 @@
-import { Ok, Error, BitString } from "./gleam.mjs";
+import { Ok, Error, BitArray } from "./gleam.mjs";
 
 export async function requestPort() {
   try {
@@ -50,7 +50,7 @@ export async function read(port, callback) {
           // |reader| has been canceled.
           break;
         }
-        callback(new BitString(value));
+        callback(new BitArray(value));
         // Do something with |value|…
       }
       return new Ok();

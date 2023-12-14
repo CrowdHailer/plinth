@@ -1,5 +1,5 @@
-import gleam/javascript/array.{Array}
-import plinth/javascript/big_int.{BigInt}
+import gleam/javascript/array.{type Array}
+import plinth/javascript/big_int.{type BigInt}
 
 /// Returns an array containing the command-line arguments passed when the Node.js process was launched.
 /// The first element will be `process.execPath`.
