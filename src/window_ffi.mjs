@@ -38,7 +38,7 @@ export function getHash() {
     return new Error();
   }
 
-  return decodeURIComponent(hash.slice(1));
+  return new Ok(decodeURIComponent(hash.slice(1)));
 }
 
 export function getSearch() {
@@ -47,7 +47,7 @@ export function getSearch() {
     return new Error();
   }
 
-  return decodeURIComponent(search.slice(1));
+  return new Ok(decodeURIComponent(search.slice(1)));
 }
 
 export function innerHeight(w) {
