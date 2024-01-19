@@ -4,6 +4,10 @@ export function self() {
   return window;
 }
 
+export function alert(message) {
+  window.alert(message);
+}
+
 export function addEventListener(type, listener) {
   return window.addEventListener(type, listener);
 }

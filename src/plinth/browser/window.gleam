@@ -6,6 +6,9 @@ pub type Window
 @external(javascript, "../../window_ffi.mjs", "self")
 pub fn self() -> Window
 
+@external(javascript, "../../window_ffi.mjs", "alert")
+pub fn alert(a: String) -> Nil
+
 @external(javascript, "../../window_ffi.mjs", "addEventListener")
 pub fn add_event_listener(type_: String, listener: fn(Event) -> Nil) -> Nil
 
