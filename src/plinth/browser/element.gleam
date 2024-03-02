@@ -1,4 +1,5 @@
 import gleam/javascript/promise.{type Promise}
+
 pub type Element
 
 @external(javascript, "../../element_ffi.mjs", "getAttribute")
