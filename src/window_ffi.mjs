@@ -81,3 +81,11 @@ export function close(w) {
 export function closed(w) {
   return w.closed;
 }
+
+export function requestAnimationFrame(callback) {
+  return window.requestAnimationFrame(callback);
+}
+
+export function cancelAnimationFrame(callback) {
+  return window.cancelAnimationFrame(callback);
+}
