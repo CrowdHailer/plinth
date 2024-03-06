@@ -5,8 +5,7 @@ export const decompress = async (data, encoding) => {
   const blob = new Blob([data.buffer])
   const decompressedStream = blob.stream().pipeThrough(ds)
 
-  return await new Response(decompressedStream)
-        .blob()
-        .then(blob => blob.arrayBuffer())
-        .then(ab => toBitArray(new Uint8Array(ab)))
+  const decompressed = await new Response(decompressedStream).blob()
+  const ab = await decompressed.arrayBuffer()
+  return toBitArray(new Uint8Array(ab))
 }
