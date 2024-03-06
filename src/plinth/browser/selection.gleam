@@ -1,4 +1,5 @@
 import plinth/browser/range.{type Range}
+
 pub type Selection
 
 @external(javascript, "../../selection_ffi.mjs", "getSelection")

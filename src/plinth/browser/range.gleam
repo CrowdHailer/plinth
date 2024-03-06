@@ -1,4 +1,5 @@
 import plinth/browser/element.{type Element}
+
 pub type Range
 
 @external(javascript, "../../range_ffi.mjs", "startContainer")
