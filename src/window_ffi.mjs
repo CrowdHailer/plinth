@@ -89,3 +89,11 @@ export function requestAnimationFrame(callback) {
 export function cancelAnimationFrame(callback) {
   return window.cancelAnimationFrame(callback);
 }
+
+export function eval_(string) {
+  try {
+    return new Ok(eval(string));
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}

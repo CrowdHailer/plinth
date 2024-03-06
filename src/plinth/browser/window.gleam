@@ -1,3 +1,4 @@
+import gleam/dynamic
 import gleam/javascript/promise.{type Promise}
 import plinth/browser/event.{type Event}
 
@@ -69,3 +70,6 @@ pub fn request_animation_frame(callback: fn() -> Nil) -> RequestID
 
 @external(javascript, "../../window_ffi.mjs", "cancelAnimationFrame")
 pub fn cancel_animation_frame(request_id: RequestID) -> Nil
+
+@external(javascript, "../../window_ffi.mjs", "eval_")
+pub fn eval(source: String) -> Result(dynamic.Dynamic, String)
