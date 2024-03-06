@@ -44,3 +44,19 @@ export function value(element) {
   }
   return new Error();
 }
+
+export function selectionStart(element) {
+  let value = element.selectionStart;
+  if (value != undefined) {
+    return new Ok(value);
+  }
+  return new Error();
+}
+
+export function setSelectionRange(element, start, end) {
+  element.setSelectionRange(start, end);
+}
+
+export function focus(element) {
+  element.focus();
+}

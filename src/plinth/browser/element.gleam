@@ -23,3 +23,14 @@ pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))
 // HTMLDataElement
 @external(javascript, "../../element_ffi.mjs", "value")
 pub fn value(element: Element) -> Result(String, Nil)
+
+// Inputs
+@external(javascript, "../../element_ffi.mjs", "focus")
+pub fn focus(element: Element) -> Nil
+
+
+@external(javascript, "../../element_ffi.mjs", "selectionStart")
+pub fn selection_start(element: Element) -> Result(Int, Nil)
+
+@external(javascript, "../../element_ffi.mjs", "setSelectionRange")
+pub fn set_selection_range(element: Element,start: Int,end: Int) -> Nil
