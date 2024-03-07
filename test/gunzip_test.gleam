@@ -1,16 +1,32 @@
 import gleam/bit_array
 import gleam/javascript/promise
 import gleeunit/should
-import simplifile
+import plinth/javascript/compression_stream.{compress}
 import plinth/javascript/decompression_stream.{decompress}
 
-pub fn gunzip_test() {
-  let assert Ok(gzipped_data) = simplifile.read_bits("test/hello.txt.gz")
-
-  use data <- promise.await(decompress(gzipped_data, "gzip"))
+pub fn gzip_test() {
+  use data <- promise.await(compress(hello(), "gzip"))
   data
-  |> bit_array.to_string
-  |> should.equal(Ok("Hello, world!\n"))
+  |> should.equal(gzipped_hello())
 
   promise.resolve(Ok(Nil))
+}
+
+pub fn gunzip_test() {
+  use data <- promise.await(decompress(gzipped_hello(), "gzip"))
+  data
+  |> should.equal(hello())
+
+  promise.resolve(Ok(Nil))
+}
+
+fn hello() {
+  bit_array.from_string("Hello")
+}
+
+fn gzipped_hello() {
+  <<
+    31, 139, 8, 0, 0, 0, 0, 0, 0, 3, 243, 72, 205, 201, 201, 7, 0, 130, 137, 209,
+    247, 5, 0, 0, 0,
+  >>
 }
