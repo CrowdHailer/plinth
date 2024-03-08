@@ -20,6 +20,9 @@ pub fn closest(element: Element, selector: String) -> Result(Element, Nil)
 @external(javascript, "../../element_ffi.mjs", "requestFullscreen")
 pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))
 
+@external(javascript, "../../element_ffi.mjs", "scrollIntoView")
+pub fn scroll_into_view(element: Element) -> Nil
+
 // HTMLDataElement
 @external(javascript, "../../element_ffi.mjs", "value")
 pub fn value(element: Element) -> Result(String, Nil)

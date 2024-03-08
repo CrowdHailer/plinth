@@ -37,6 +37,10 @@ export async function requestFullscreen(element) {
   }
 }
 
+export function scrollIntoView(element) {
+  element.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 export function value(element) {
   let value = element.value;
   if (value != undefined) {
