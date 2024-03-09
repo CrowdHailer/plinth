@@ -12,7 +12,7 @@ gleam = ">= 0.32.0"
 # links = [{ title = "Website", href = "https://gleam.run" }]
 
 [dependencies]
-gleam_stdlib = "~> 0.29"
+gleam_stdlib = "~> 0.29 or ~> 1.0"
 gleam_javascript = "~> 0.4"
 gleam_json = "~> 0.7 or ~> 1.0"
 
