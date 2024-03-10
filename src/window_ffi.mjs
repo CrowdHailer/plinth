@@ -82,6 +82,10 @@ export function closed(w) {
   return w.closed;
 }
 
+export function queueMicrotask(callback) {
+  return window.queueMicrotask(callback);
+}
+
 export function requestAnimationFrame(callback) {
   return window.requestAnimationFrame(callback);
 }
