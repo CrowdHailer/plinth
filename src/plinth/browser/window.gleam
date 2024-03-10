@@ -62,6 +62,9 @@ pub fn close(window: Window) -> Bool
 @external(javascript, "../../window_ffi.mjs", "closed")
 pub fn closed(window: Window) -> Bool
 
+@external(javascript, "../../window_ffi.mjs", "queueMicrotask")
+pub fn queue_microtask(callback: fn() -> Nil) -> Nil
+
 // A long integer value, the request ID, that uniquely identifies the entry in the callback list. This is a non-zero value, but you may not make any other assumptions about its value. You can pass this value to window.cancelAnimationFrame() to cancel the refresh callback request.
 pub type RequestID
 
