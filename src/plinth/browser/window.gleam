@@ -1,6 +1,6 @@
 import gleam/dynamic
 import gleam/javascript/promise.{type Promise}
-import plinth/browser/event.{type Event}
+import plinth/browser/event.{type Event, type KeyboardEvent}
 
 pub type Window
 
@@ -12,6 +12,30 @@ pub fn alert(a: String) -> Nil
 
 @external(javascript, "../../window_ffi.mjs", "addEventListener")
 pub fn add_event_listener(type_: String, listener: fn(Event) -> Nil) -> Nil
+
+fn add_keyboard_event_listener(
+  type_: String,
+  listener: fn(KeyboardEvent) -> Nil,
+) -> Nil {
+  add_event_listener(type_, fn(e) {
+    case event.as_keyboard_event(e) {
+      Ok(e) -> listener(e)
+      Error(_) -> Nil
+    }
+  })
+}
+
+pub fn add_event_listener_keypress(listener: fn(KeyboardEvent) -> Nil) -> Nil {
+  add_keyboard_event_listener("keypress", listener)
+}
+
+pub fn add_event_listener_keydown(listener: fn(KeyboardEvent) -> Nil) -> Nil {
+  add_keyboard_event_listener("keydown", listener)
+}
+
+pub fn add_event_listener_keyup(listener: fn(KeyboardEvent) -> Nil) -> Nil {
+  add_keyboard_event_listener("keyup", listener)
+}
 
 pub type WakeLockSentinal
 
