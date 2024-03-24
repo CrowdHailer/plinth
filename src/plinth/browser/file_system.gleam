@@ -6,8 +6,20 @@ pub type DirectoryHandle
 
 pub type FileHandle
 
+// pub type Handle {
+//   FSFileHandle(FileHandle)
+//   FSDirectoryHandle(DirectoryHandle)
+// }
+
+
 @external(javascript, "../../file_system_ffi.mjs", "showDirectoryPicker")
 pub fn show_directory_picker() -> Promise(Result(DirectoryHandle, String))
+
+@external(javascript, "../../file_system_ffi.mjs", "getFileHandle")
+pub fn get_file_handle(handle: DirectoryHandle, name: String) -> Promise(Result(FileHandle, String))
+
+@external(javascript, "../../file_system_ffi.mjs", "allEntries")
+pub fn all_entries(handle: DirectoryHandle) -> Promise(Result(#(Array(DirectoryHandle), Array(FileHandle)), String))
 
 @external(javascript, "../../file_system_ffi.mjs", "showOpenFilePicker")
 pub fn show_open_file_picker() -> Promise(Result(Array(FileHandle), String))
