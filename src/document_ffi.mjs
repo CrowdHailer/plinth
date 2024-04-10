@@ -15,3 +15,15 @@ export function querySelectorAll(query) {
 export function addEventListener(type, listener) {
   return document.addEventListener(type, listener);
 }
+
+export function createElement(tagName) {
+  return document.createElement(tagName)
+}
+
+export function createTextNode(content) {
+  return document.createTextNode(content)
+}
+
+export function body() {
+  return document.body
+}
