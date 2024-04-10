@@ -64,3 +64,7 @@ export function setSelectionRange(element, start, end) {
 export function focus(element) {
   element.focus();
 }
+
+export function appendChild(parent, child) {
+  parent.appendChild(child)
+}
