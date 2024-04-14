@@ -1,7 +1,7 @@
 import { Ok, Error } from "./gleam.mjs";
 
 export function self() {
-  return window;
+  return globalThis;
 }
 
 export function alert(message) {
@@ -25,7 +25,11 @@ export function location() {
 }
 
 export function locationOf(w) {
-  return w.location.href;
+  try {
+    return new Ok(w.location.href);
+  } catch (error) {
+    return new Error(error.toString());
+  }
 }
 
 export function reload() {

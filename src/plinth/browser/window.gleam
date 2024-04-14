@@ -23,7 +23,7 @@ pub fn request_wake_lock() -> Promise(Result(WakeLockSentinal, Nil))
 pub fn location() -> String
 
 @external(javascript, "../../window_ffi.mjs", "locationOf")
-pub fn location_of(window: Window) -> String
+pub fn location_of(window: Window) -> Result(String, String)
 
 // reload exists on the location object but exposed at top level here
 @external(javascript, "../../window_ffi.mjs", "reload")
