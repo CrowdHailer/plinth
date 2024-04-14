@@ -6,6 +6,10 @@ export function new_(string) {
   return new Date(string);
 }
 
+export function toISOString(d) {
+  return d.toISOString();
+}
+
 export function year(d) {
   return d.getYear();
 }

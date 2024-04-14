@@ -5,6 +5,9 @@ pub type Date {
 @external(javascript, "../../date_ffi.mjs", "now")
 pub fn now() -> Date
 
+@external(javascript, "../../date_ffi.mjs", "toISOString")
+pub fn to_iso_string(string: Date) -> String
+
 @external(javascript, "../../date_ffi.mjs", "new_")
 pub fn new(string: String) -> Date
 
