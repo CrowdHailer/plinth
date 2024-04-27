@@ -69,7 +69,7 @@ pub fn queue_microtask(callback: fn() -> Nil) -> Nil
 pub type RequestID
 
 @external(javascript, "../../window_ffi.mjs", "requestAnimationFrame")
-pub fn request_animation_frame(callback: fn() -> Nil) -> RequestID
+pub fn request_animation_frame(callback: fn(Float) -> Nil) -> RequestID
 
 @external(javascript, "../../window_ffi.mjs", "cancelAnimationFrame")
 pub fn cancel_animation_frame(request_id: RequestID) -> Nil
