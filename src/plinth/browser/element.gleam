@@ -30,6 +30,9 @@ pub fn append_child(parent: Element, child: Element) -> Nil
 @external(javascript, "../../element_ffi.mjs", "value")
 pub fn value(element: Element) -> Result(String, Nil)
 
+@external(javascript, "../../element_ffi.mjs", "setValue")
+pub fn set_value(element: Element, value: String) -> Nil
+
 // Inputs
 @external(javascript, "../../element_ffi.mjs", "focus")
 pub fn focus(element: Element) -> Nil

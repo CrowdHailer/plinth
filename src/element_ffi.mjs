@@ -49,6 +49,10 @@ export function value(element) {
   return new Error();
 }
 
+export function setValue(element, value) {
+  element.value = value;
+}
+
 export function selectionStart(element) {
   let value = element.selectionStart;
   if (value != undefined) {
