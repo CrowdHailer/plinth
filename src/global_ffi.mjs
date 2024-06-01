@@ -1,4 +1,4 @@
-export function setTimeout(callback, delay) {
+export function setTimeout(delay, callback) {
   globalThis.setTimeout(callback, delay);
 }
 
