@@ -32,8 +32,21 @@ export function locationOf(w) {
   }
 }
 
+export function setLocation(w, url) {
+  w.location.href = url;
+}
+
+
 export function reload() {
   return window.location.reload();
+}
+
+export function reloadOf(w) {
+  return w.location.reload();
+}
+
+export function focus(w) {
+  return w.focus();
 }
 
 export function getHash() {
@@ -101,6 +114,14 @@ export function cancelAnimationFrame(callback) {
 export function eval_(string) {
   try {
     return new Ok(eval(string));
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}
+
+export async function import_(string) {
+  try {
+    return new Ok(await import(string));
   } catch (error) {
     return new Error(error.toString());
   }

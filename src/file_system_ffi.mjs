@@ -8,6 +8,31 @@ export async function showDirectoryPicker() {
   }
 }
 
+export async function getFileHandle(directoryHandle, name) {
+  try {
+    return new Ok(await directoryHandle.getFileHandle(name));
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}
+
+export async function allEntries(directoryHandle) {
+  try {
+    const dirs = [];
+    const files = [];
+    for await (const entry of directoryHandle.values()) {
+      if (entry.kind === "file") {
+        files.push(entry);
+      } else {
+        dirs.push(entry);
+      }
+    }
+    return new Ok([dirs, files]);
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}
+
 export async function showOpenFilePicker() {
   try {
     return new Ok(await window.showOpenFilePicker());

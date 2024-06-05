@@ -23,6 +23,30 @@ pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))
 @external(javascript, "../../element_ffi.mjs", "scrollIntoView")
 pub fn scroll_into_view(element: Element) -> Nil
 
+@external(javascript, "../../element_ffi.mjs", "scrollHeight")
+pub fn scroll_height(element: Element) -> Float
+
+@external(javascript, "../../element_ffi.mjs", "scrollLeft")
+pub fn scroll_left(element: Element) -> Float
+
+@external(javascript, "../../element_ffi.mjs", "scrollTop")
+pub fn scroll_top(element: Element) -> Float
+
+@external(javascript, "../../element_ffi.mjs", "scrollWidth")
+pub fn scroll_width(element: Element) -> Float
+
+@external(javascript, "../../element_ffi.mjs", "setScrollHeight")
+pub fn set_scroll_height(element: Element, value: Float) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "setScrollLeft")
+pub fn set_scroll_left(element: Element, value: Float) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "setScrollTop")
+pub fn set_scroll_top(element: Element, value: Float) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "setScrollWidth")
+pub fn set_scroll_width(element: Element, value: Float) -> Nil
+
 @external(javascript, "../../element_ffi.mjs", "appendChild")
 pub fn append_child(parent: Element, child: Element) -> Nil
 

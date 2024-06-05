@@ -41,6 +41,38 @@ export function scrollIntoView(element) {
   element.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+export function scrollHeight(element) {
+  return element.scrollHeight;
+}
+
+export function scrollLeft(element) {
+  return element.scrollLeft;
+}
+
+export function scrollTop(element) {
+  return element.scrollTop;
+}
+
+export function scrollWidth(element) {
+  return element.scrollWidth;
+}
+
+export function setScrollHeight(element, value) {
+  element.scrollHeight = value;
+}
+
+export function setScrollLeft(element, value) {
+  element.scrollLeft = value;
+}
+
+export function setScrollTop(element, value) {
+  element.scrollTop = value;
+}
+
+export function setScrollWidth(element, value) {
+  element.scrollWidth = value;
+}
+
 export function value(element) {
   let value = element.value;
   if (value != undefined) {
