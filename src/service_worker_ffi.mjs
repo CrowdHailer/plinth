@@ -16,6 +16,10 @@ export function scriptURL(self) {
   return self.serviceWorker.scriptURL;
 }
 
+export function origin(self) {
+  return self.origin;
+}
+
 export function addFetchListener(self, handler) {
   self.addEventListener("fetch", handler)
 }
@@ -31,7 +35,6 @@ export async function doClaim(self) {
 }
 
 export function fetchEventClient(event) {
-  console.log(event);
   return event.client
 }
 

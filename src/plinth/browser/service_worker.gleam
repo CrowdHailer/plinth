@@ -20,8 +20,13 @@ pub fn self() -> Result(GlobalScope, String)
 @external(javascript, "../../service_worker_ffi.mjs", "skipWaiting")
 pub fn skip_waiting(self: GlobalScope) -> Promise(Nil)
 
+/// self.serviceWorker not available in firefox https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker
+@deprecated("self.serviceWorker not available in firefox.")
 @external(javascript, "../../service_worker_ffi.mjs", "scriptURL")
 pub fn script_url(self: GlobalScope) -> String
+
+@external(javascript, "../../service_worker_ffi.mjs", "origin")
+pub fn origin(self: GlobalScope) -> String
 
 pub type FetchEvent
 
