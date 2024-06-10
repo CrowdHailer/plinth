@@ -25,7 +25,7 @@ export function addFetchListener(self, handler) {
 }
 
 export function addActivateListener(self, handler) {
-  self.addEventListener("fetch", handler)
+  self.addEventListener("activate", handler)
 }
 
 export async function doClaim(self) {
