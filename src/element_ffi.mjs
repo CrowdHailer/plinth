@@ -20,6 +20,30 @@ export function innerText(element) {
   return element.innerText;
 }
 
+export function insertAdjacentElement(target, position, element) {
+  try {
+    return new Ok(target.insertAdjacentElement(position, element));
+  } catch (error) {
+    return new Error(`${error}`);
+  }
+}
+
+export function insertAdjacentHTML(target, position, element) {
+  try {
+    return new Ok(target.insertAdjacentHTML(position, element));
+  } catch (error) {
+    return new Error(`${error}`);
+  }
+}
+
+export function insertAdjacentText(target, position, element) {
+  try {
+    return new Ok(target.insertAdjacentText(position, element));
+  } catch (error) {
+    return new Error(`${error}`);
+  }
+}
+
 export function closest(element, selector) {
   let ancestor = element.closest(selector);
   if (ancestor) {

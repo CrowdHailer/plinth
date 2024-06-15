@@ -14,6 +14,70 @@ pub fn set_inner_html(element: Element, value: String) -> Nil
 @external(javascript, "../../element_ffi.mjs", "innerText")
 pub fn inner_text(element: Element) -> String
 
+pub type Position {
+  BeforeBegin
+  AfterBegin
+  BeforeEnd
+  AfterEnd
+}
+
+fn position_to_string(position) {
+  case position {
+    BeforeBegin -> "beforebegin"
+    AfterBegin -> "afterbegin"
+    BeforeEnd -> "beforeend"
+    AfterEnd -> "afterend"
+  }
+}
+
+@external(javascript, "../../element_ffi.mjs", "insertAdjacentElement")
+fn do_insert_adjacent_element(
+  target: Element,
+  position: String,
+  element: Element,
+) -> Result(Element, String)
+
+pub fn insert_adjacent_element(
+  target: Element,
+  position: Position,
+  element: Element,
+) -> Result(Element, String) {
+  let position = position_to_string(position)
+  do_insert_adjacent_element(target, position, element)
+}
+
+@external(javascript, "../../element_ffi.mjs", "insertAdjacentHTML")
+fn do_insert_adjacent_html(
+  target: Element,
+  position: String,
+  html: String,
+) -> Result(Element, String)
+
+pub fn insert_adjacent_html(
+  target: Element,
+  position: Position,
+  html: String,
+) -> Result(Element, String) {
+  let position = position_to_string(position)
+  do_insert_adjacent_html(target, position, html)
+}
+
+@external(javascript, "../../element_ffi.mjs", "insertAdjacentText")
+fn do_insert_adjacent_text(
+  target: Element,
+  position: String,
+  text: String,
+) -> Result(Element, String)
+
+pub fn insert_adjacent_text(
+  target: Element,
+  position: Position,
+  text: String,
+) -> Result(Element, String) {
+  let position = position_to_string(position)
+  do_insert_adjacent_text(target, position, text)
+}
+
 @external(javascript, "../../element_ffi.mjs", "closest")
 pub fn closest(element: Element, selector: String) -> Result(Element, Nil)
 
