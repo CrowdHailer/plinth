@@ -145,6 +145,10 @@ export function appendChild(parent, child) {
   parent.appendChild(child)
 }
 
+export function remove(element) {
+  element.remove();
+}
+
 export function datasetGet(el, key) {
   if (key in el.dataset) {
     return new Ok(el.dataset[key]);

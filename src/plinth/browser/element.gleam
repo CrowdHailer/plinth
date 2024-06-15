@@ -3,7 +3,7 @@ import plinth/browser/event.{type Event}
 
 pub type Element
 
-@external(javascript, "../../plinth_ffi.js", "addEventListener")
+@external(javascript, "../../element_ffi.mjs", "addEventListener")
 pub fn add_event_listener(
   a: Element,
   b: String,
@@ -89,7 +89,7 @@ pub fn insert_adjacent_text(
   do_insert_adjacent_text(target, position, text)
 }
 
-@external(javascript, "../../element_ffi.js", "nextElementSibling")
+@external(javascript, "../../element_ffi.mjs", "nextElementSibling")
 pub fn next_element_sibling(element: Element) -> Result(Element, Nil)
 
 @external(javascript, "../../element_ffi.mjs", "closest")
@@ -128,7 +128,10 @@ pub fn set_scroll_width(element: Element, value: Float) -> Nil
 @external(javascript, "../../element_ffi.mjs", "appendChild")
 pub fn append_child(parent: Element, child: Element) -> Nil
 
-@external(javascript, "../../element_ffi.js", "datasetGet")
+@external(javascript, "../../element_ffi.mjs", "remove")
+pub fn remove(a: Element) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "datasetGet")
 pub fn dataset_get(element: Element, key: String) -> Result(String, Nil)
 
 // HTMLDataElement

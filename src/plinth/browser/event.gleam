@@ -6,8 +6,11 @@ pub type Event
 @external(javascript, "../../event_ffi.mjs", "target")
 pub fn target(event: Event) -> Dynamic
 
+@external(javascript, "../../event_ffi.mjs", "key")
+pub fn key(event: Event) -> String
+
 @external(javascript, "../../event_ffi.mjs", "preventDefault")
-pub fn prevent_default(event: Event) -> Dynamic
+pub fn prevent_default(event: Event) -> Nil
 
 @external(javascript, "../../event_ffi.mjs", "stopPropagation")
-pub fn stop_propagation(event: Event) -> Dynamic
+pub fn stop_propagation(event: Event) -> Nil
