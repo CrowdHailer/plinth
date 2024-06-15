@@ -12,6 +12,10 @@ export function setAttribute(element, name, value) {
   element.setAttribute(name, value);
 }
 
+export function addEventListener(element, type, listener) {
+  return element.addEventListener(type, listener);
+}
+
 export function setInnerHTML(element, content) {
   element.innerHTML = content;
 }
@@ -127,4 +131,11 @@ export function focus(element) {
 
 export function appendChild(parent, child) {
   parent.appendChild(child)
+}
+
+export function datasetGet(el, key) {
+  if (key in el.dataset) {
+    return new Ok(el.dataset[key]);
+  }
+  return new Error(undefined);
 }

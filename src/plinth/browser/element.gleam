@@ -1,6 +1,14 @@
 import gleam/javascript/promise.{type Promise}
+import plinth/browser/event.{type Event}
 
 pub type Element
+
+@external(javascript, "../../plinth_ffi.js", "addEventListener")
+pub fn add_event_listener(
+  a: Element,
+  b: String,
+  c: fn(Event) -> Nil,
+) -> fn() -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "getAttribute")
 pub fn get_attribute(element: Element, name: String) -> Result(String, Nil)
@@ -113,6 +121,9 @@ pub fn set_scroll_width(element: Element, value: Float) -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "appendChild")
 pub fn append_child(parent: Element, child: Element) -> Nil
+
+@external(javascript, "../../element_ffi.js", "datasetGet")
+pub fn dataset_get(element: Element, key: String) -> Result(String, Nil)
 
 // HTMLDataElement
 @external(javascript, "../../element_ffi.mjs", "value")
