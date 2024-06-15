@@ -48,6 +48,14 @@ export function insertAdjacentText(target, position, element) {
   }
 }
 
+export function nextElementSibling(element) {
+  let sibling = element.nextElementSibling;
+  if (sibling) {
+    return new Ok(sibling);
+  }
+  return new Error();
+}
+
 export function closest(element, selector) {
   let ancestor = element.closest(selector);
   if (ancestor) {

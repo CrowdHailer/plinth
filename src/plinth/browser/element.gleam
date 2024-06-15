@@ -86,6 +86,9 @@ pub fn insert_adjacent_text(
   do_insert_adjacent_text(target, position, text)
 }
 
+@external(javascript, "../../element_ffi.js", "nextElementSibling")
+pub fn next_element_sibling(element: Element) -> Result(Element, Nil)
+
 @external(javascript, "../../element_ffi.mjs", "closest")
 pub fn closest(element: Element, selector: String) -> Result(Element, Nil)
 
