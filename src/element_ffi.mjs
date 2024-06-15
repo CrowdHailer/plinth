@@ -24,6 +24,10 @@ export function innerText(element) {
   return element.innerText;
 }
 
+export function setInnerText(element, content) {
+  element.innerText = content;
+}
+
 export function insertAdjacentElement(target, position, element) {
   try {
     return new Ok(target.insertAdjacentElement(position, element));
