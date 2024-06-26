@@ -1,5 +1,5 @@
-import plinth/javascript/big_int
 import gleeunit/should
+import plinth/javascript/big_int
 
 pub fn add_test() {
   big_int.from_int(1)
