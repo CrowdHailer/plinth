@@ -36,7 +36,6 @@ export function setLocation(w, url) {
   w.location.href = url;
 }
 
-
 export function reload() {
   return window.location.reload();
 }
@@ -81,6 +80,30 @@ export function outerHeight(w) {
 
 export function outerWidth(w) {
   return w.outerWidth;
+}
+
+export function screenX(w) {
+  return w.screenX;
+}
+
+export function screenY(w) {
+  return w.screenY;
+}
+
+export function screenTop(w) {
+  return w.screenTop;
+}
+
+export function screenLeft(w) {
+  return w.screenLeft;
+}
+
+export function scrollX(w) {
+  return w.scrollX;
+}
+
+export function scrollY(w) {
+  return w.scrollY;
 }
 
 export function open(url, target, features) {

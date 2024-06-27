@@ -59,6 +59,24 @@ pub fn outer_height(window: Window) -> Int
 @external(javascript, "../../window_ffi.mjs", "outerWidth")
 pub fn outer_width(window: Window) -> Int
 
+@external(javascript, "../../window_ffi.mjs", "screenX")
+pub fn screen_x(window: Window) -> Int
+
+@external(javascript, "../../window_ffi.mjs", "screenY")
+pub fn screen_y(window: Window) -> Int
+
+@external(javascript, "../../window_ffi.mjs", "screenTop")
+pub fn screen_top(window: Window) -> Int
+
+@external(javascript, "../../window_ffi.mjs", "screenLeft")
+pub fn screen_left(window: Window) -> Int
+
+@external(javascript, "../../window_ffi.mjs", "scrollX")
+pub fn scroll_x(window: Window) -> Int
+
+@external(javascript, "../../window_ffi.mjs", "scrollY")
+pub fn scroll_y(window: Window) -> Int
+
 @external(javascript, "../../worker_ffi.mjs", "onMessage")
 pub fn on_message(worker: Window, handle: fn(Json) -> Nil) -> Nil
 
