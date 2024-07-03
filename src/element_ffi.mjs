@@ -142,7 +142,7 @@ export function focus(element) {
 }
 
 export function appendChild(parent, child) {
-  parent.appendChild(child)
+  parent.appendChild(child);
 }
 
 export function remove(element) {
@@ -154,4 +154,12 @@ export function datasetGet(el, key) {
     return new Ok(el.dataset[key]);
   }
   return new Error(undefined);
+}
+
+export function getChecked(el) {
+  return el.checked;
+}
+
+export function setTextContent(element, text) {
+  element.textContent = text;
 }
