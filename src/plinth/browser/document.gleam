@@ -19,3 +19,6 @@ pub fn create_text_node(content: String) -> Element
 
 @external(javascript, "../../document_ffi.mjs", "body")
 pub fn body() -> Element
+
+@external(javascript, "../../document_ffi.mjs", "getElementById")
+pub fn get_element_by_id(id: String) -> Result(Element, Nil)
