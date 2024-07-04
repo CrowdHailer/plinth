@@ -150,3 +150,9 @@ pub fn selection_start(element: Element) -> Result(Int, Nil)
 
 @external(javascript, "../../element_ffi.mjs", "setSelectionRange")
 pub fn set_selection_range(element: Element, start: Int, end: Int) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "setTextContent")
+pub fn set_text_content(element: Element, text: String) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "getChecked")
+pub fn get_checked(element: Element) -> Bool

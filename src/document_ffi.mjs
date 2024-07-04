@@ -17,13 +17,21 @@ export function addEventListener(type, listener) {
 }
 
 export function createElement(tagName) {
-  return document.createElement(tagName)
+  return document.createElement(tagName);
 }
 
 export function createTextNode(content) {
-  return document.createTextNode(content)
+  return document.createTextNode(content);
 }
 
 export function body() {
-  return document.body
+  return document.body;
+}
+
+export function getElementById(id) {
+  let found = document.getElementById(id);
+  if (!found) {
+    return new Error();
+  }
+  return new Ok(found);
 }
