@@ -2,12 +2,6 @@ import gleam/javascript/array.{type Array}
 import plinth/browser/element.{type Element}
 import plinth/browser/event.{type Event}
 
-pub type ReadyState {
-  Loading
-  Interactive
-  Complete
-}
-
 @external(javascript, "../../document_ffi.mjs", "querySelector")
 pub fn query_selector(selector: String) -> Result(Element, Nil)
 
