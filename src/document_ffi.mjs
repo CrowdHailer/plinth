@@ -35,3 +35,7 @@ export function getElementById(id) {
   }
   return new Ok(found);
 }
+
+export function readyState() {
+  return document.readyState;
+}
