@@ -39,3 +39,11 @@ export function getElementById(id) {
 export function readyState() {
   return document.readyState;
 }
+
+export function hidden() {
+  return document.hidden;
+}
+
+export function visibilityState() {
+  return document.visibilityState;
+}

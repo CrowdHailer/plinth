@@ -25,3 +25,13 @@ pub fn get_element_by_id(id: String) -> Result(Element, Nil)
 
 @external(javascript, "../../document_ffi.mjs", "readyState")
 pub fn ready_state() -> String
+
+/// Get the [`hidden`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hidden)
+/// attribute value of the current document
+@external(javascript, "../../document_ffi.mjs", "hidden")
+pub fn hidden() -> Bool
+
+/// Get the [`visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
+/// attribute value of the current document. It should be either `"visible"` or `"hidden"`.
+@external(javascript, "../../document_ffi.mjs", "visibilityState")
+pub fn visibility_state() -> String
