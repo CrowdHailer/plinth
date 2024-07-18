@@ -10,11 +10,17 @@ pub fn new(bits: BitArray, name: String) -> File
 @external(javascript, "../../file_ffi.mjs", "text")
 pub fn text(file: File) -> Promise(String)
 
+@external(javascript, "../../file_ffi.mjs", "bytes")
+pub fn bytes(file: File) -> Promise(BitArray)
+
 @external(javascript, "../../file_ffi.mjs", "name")
 pub fn name(file: File) -> String
 
 @external(javascript, "../../file_ffi.mjs", "mime")
 pub fn mime(file: File) -> String
+
+@external(javascript, "../../file_ffi.mjs", "size")
+pub fn size(file: File) -> Int
 
 @external(javascript, "../../file_ffi.mjs", "createObjectURL")
 pub fn create_object_url(object: File) -> String
