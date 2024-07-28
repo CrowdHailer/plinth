@@ -10,11 +10,10 @@ export function keyCode(event) {
   return event.keyCode;
 }
 
-
 export function preventDefault(event) {
-  return event.preventDefault;
+  return event.preventDefault();
 }
 
 export function stopPropagation(event) {
-  return event.stopPropagation;
+  return event.stopPropagation();
 }
