@@ -72,3 +72,15 @@ export async function bun_password_verify(password, hash, algorithm) {
   ? Bun.password.verify(password, hash, algorithm[0].algorithm)
   : Bun.password.verify(password, hash);
 }
+
+export async function bun_password_hash_sync(password, algorithm) {
+  return option.is_some(algorithm)
+  ? Bun.password.hashSync(password, algorithm[0])
+  : Bun.password.hashSync(password);
+}
+
+export async function bun_password_verify_sync(password, hash, algorithm) {
+  return option.is_some(algorithm)
+  ? Bun.password.verifySync(password, hash, algorithm[0].algorithm)
+  : Bun.password.verifySync(password, hash);
+}
