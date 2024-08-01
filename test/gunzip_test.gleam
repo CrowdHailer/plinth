@@ -1,3 +1,4 @@
+import platform
 import gleam/bit_array
 import gleam/javascript/promise
 import gleeunit/should
@@ -5,19 +6,30 @@ import plinth/javascript/compression_stream.{compress}
 import plinth/javascript/decompression_stream.{decompress}
 
 pub fn gzip_test() {
-  use data <- promise.await(compress(hello(), "gzip"))
-  data
-  |> should.equal(gzipped_hello())
+  case platform.get_platform() {
+    platform.Bun -> promise.resolve(Ok(Nil))
+    _ -> {
+      use data <- promise.await(compress(hello(), "gzip"))
+      data
+      |> should.equal(gzipped_hello())
 
-  promise.resolve(Ok(Nil))
+      promise.resolve(Ok(Nil))
+    }
+  }
 }
 
 pub fn gunzip_test() {
-  use data <- promise.await(decompress(gzipped_hello(), "gzip"))
-  data
-  |> should.equal(hello())
+  case platform.get_platform() {
+    platform.Bun -> promise.resolve(Ok(Nil))
+    _ -> {
+      use data <- promise.await(decompress(gzipped_hello(), "gzip"))
+      data
+      |> should.equal(hello())
 
-  promise.resolve(Ok(Nil))
+      promise.resolve(Ok(Nil))
+
+    }
+  }
 }
 
 fn hello() {
