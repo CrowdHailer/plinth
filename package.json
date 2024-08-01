@@ -1,0 +1,7 @@
+{
+  "name": "plinth",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "compression-streams-polyfill": "^0.1.7"
+  }
+}
