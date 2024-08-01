@@ -1,9 +1,5 @@
 import { toBitArray } from "../gleam_stdlib/gleam.mjs"
 
-if (typeof CompressionStream === "undefined") {
-  await import("compression-streams-polyfill")
-}
-
 export const compress = async (data, encoding) => {
   const ds = new CompressionStream(encoding);
   const blob = new Blob([data.buffer])
