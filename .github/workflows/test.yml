@@ -21,8 +21,7 @@ jobs:
           gleam-version: "1.2"
           rebar3-version: "3"
           # elixir-version: "1.15.4"
-      - run: bun install
       - run: gleam format --check src test
       - run: gleam deps download
       - run: gleam test
-      - run: gleam test --target javascript --runtime bun
+      - run: gleam test --runtime bun
