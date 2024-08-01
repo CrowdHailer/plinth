@@ -1,12 +1,6 @@
 import gleam/option.{type Option}
 import gleam/javascript/promise.{type Promise}
 
-pub type Argon2AlgorithmType {
-  Argon2ID
-  Argon2D
-  Argon2I
-}
-
 pub type Algorithm
 
 @target(javascript)
