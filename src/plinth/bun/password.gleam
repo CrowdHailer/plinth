@@ -5,7 +5,7 @@ pub type Algorithm
 
 @target(javascript)
 @external(javascript, "../../bun_ffi.mjs", "bun_password_hash")
-pub fn bun_password_hash(password: String, algorithm: Option(Algorithm)) -> Promise(String)
+pub fn bun_password_hash(password: input, algorithm: Option(Algorithm)) -> Promise(String)
 
 @target(javascript)
 @external(javascript, "../../bun_ffi.mjs", "bun_argon2i_algorithm")
@@ -25,4 +25,4 @@ pub fn bun_bcrypt_algorithm(cost: Option(Int)) -> Algorithm
 
 @target(javascript)
 @external(javascript, "../../bun_ffi.mjs", "bun_password_verify")
-pub fn bun_password_verify(password: String, hash: String, algorithm: Option(Algorithm)) -> Promise(Bool)
+pub fn bun_password_verify(password: input, hash: input_2, algorithm: Option(Algorithm)) -> Promise(Bool)
