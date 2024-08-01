@@ -9,10 +9,10 @@ pub fn bun_password_hash(password: input, algorithm: Option(Algorithm)) -> Promi
 @external(javascript, "../../bun_password_ffi.mjs", "bun_password_verify")
 pub fn bun_password_verify(password: input, hash: input_2, algorithm: Option(Algorithm)) -> Promise(Bool)
 
-@external(javascript, "../../bun_password_ffi.mjs", "bun_password_hash")
+@external(javascript, "../../bun_password_ffi.mjs", "bun_password_hash_sync")
 pub fn bun_password_hash_sync(password: input, algorithm: Option(Algorithm)) -> String
 
-@external(javascript, "../../bun_password_ffi.mjs", "bun_password_verify")
+@external(javascript, "../../bun_password_ffi.mjs", "bun_password_verify_sync")
 pub fn bun_password_verify_sync(password: input, hash: input_2, algorithm: Option(Algorithm)) -> Bool
 
 @external(javascript, "../../bun_password_ffi.mjs", "bun_argon2i_algorithm")
