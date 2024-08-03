@@ -17,3 +17,7 @@ export function debug(value) {
 export function info(value) {
   console.info(value);
 }
+
+export function assert(assertion, value) {
+  console.assert(assertion, value);
+}

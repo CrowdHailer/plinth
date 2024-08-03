@@ -20,3 +20,8 @@ pub fn info(value: a) -> Nil
 /// Outputs a message to the console with the debug log level.
 @external(javascript, "../../console_ffi.mjs", "debug")
 pub fn debug(value: a) -> Nil
+
+/// Writes an error message to the console if the assertion is false.
+/// If the assertion is true, nothing happens.
+@external(javascript, "../../console_ffi.mjs", "assert")
+pub fn assert_(assertion: Bool, value: a) -> Nil

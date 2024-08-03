@@ -19,3 +19,11 @@ pub fn info_test() {
 pub fn debug_test() {
   console.debug(#("Debug", 3, 5, Ok(7)))
 }
+
+pub fn assert_pass_test() {
+  console.assert_(True, "You should NOT see this!")
+}
+
+pub fn assert_fail_test() {
+  console.assert_(False, "You should see this!")
+}
