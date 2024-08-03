@@ -27,3 +27,11 @@ pub fn assert_pass_test() {
 pub fn assert_fail_test() {
   console.assert_(False, "You should see this!")
 }
+
+pub fn group_test() {
+  console.group("test label")
+  console.log("Inside the group")
+  console.log("Also inside the group")
+  console.group_end()
+  console.log("Outside the group")
+}

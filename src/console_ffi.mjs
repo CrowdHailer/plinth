@@ -25,3 +25,15 @@ export function assert(assertion, value) {
 export function clear() {
   console.clear();
 }
+
+export function group(label) {
+  console.group(label);
+}
+
+export function group_collapsed(label) {
+  console.groupCollapsed(label);
+}
+
+export function group_end() {
+  console.groupEnd();
+}
