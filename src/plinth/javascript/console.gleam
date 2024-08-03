@@ -25,3 +25,10 @@ pub fn debug(value: a) -> Nil
 /// If the assertion is true, nothing happens.
 @external(javascript, "../../console_ffi.mjs", "assert")
 pub fn assert_(assertion: Bool, value: a) -> Nil
+
+/// clears the console if the console allows it. A graphical console,
+/// like those running on browsers, will allow it; a console displaying
+/// on the terminal, like the one running on Node, will not support it,
+/// and will have no effect (and no error).
+@external(javascript, "../../console_ffi.mjs", "clear")
+pub fn clear() -> Nil

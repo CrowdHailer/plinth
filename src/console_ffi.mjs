@@ -21,3 +21,7 @@ export function info(value) {
 export function assert(assertion, value) {
   console.assert(assertion, value);
 }
+
+export function clear() {
+  console.clear();
+}
