@@ -17,7 +17,3 @@ export function decodeURI(value) {
 export function decodeURIComponent(value) {
   return globalThis.decodeURIComponent(value);
 }
-
-export function log(value) {
-  console.log(value);
-}
