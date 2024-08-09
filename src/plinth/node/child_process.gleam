@@ -1,9 +1,7 @@
-pub type ChildProcess {
-  ChildProcess(stdin: Stdin)
-}
+import plinth/node/stream
 
-pub type Stdin {
-  Stdin(write: fn(String) -> Nil)
+pub type ChildProcess {
+  ChildProcess(stdin: stream.Writable)
 }
 
 @external(javascript, "child_process", "exec")
