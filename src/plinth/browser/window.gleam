@@ -29,6 +29,12 @@ pub fn location_of(window: Window) -> Result(String, String)
 @external(javascript, "../../window_ffi.mjs", "setLocation")
 pub fn set_location(window: Window, url: String) -> Nil
 
+@external(javascript, "../../window_ffi.mjs", "origin")
+pub fn origin() -> String
+
+@external(javascript, "../../window_ffi.mjs", "pathname")
+pub fn pathname() -> String
+
 // reload exists on the location object but exposed at top level here
 @external(javascript, "../../window_ffi.mjs", "reload")
 pub fn reload() -> Nil

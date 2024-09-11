@@ -36,6 +36,14 @@ export function setLocation(w, url) {
   w.location.href = url;
 }
 
+export function origin() {
+  return window.location.origin;
+}
+
+export function pathname() {
+  return window.location.pathname;
+}
+
 export function reload() {
   return window.location.reload();
 }
