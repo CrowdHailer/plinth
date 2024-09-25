@@ -1,6 +1,16 @@
-import gleam/dynamic.{type Dynamic}
+import gleam/dynamic.{type Dynamic, DecodeError}
 
 pub type Event
+
+@external(javascript, "../../event_ffi.mjs", "cast")
+fn do_cast(raw: Dynamic) -> Result(Event, Nil)
+
+pub fn cast(raw) {
+  case do_cast(raw) {
+    Ok(event) -> Ok(event)
+    Error(Nil) -> Error(DecodeError("Event", dynamic.classify(raw), []))
+  }
+}
 
 // event only knows about event target not Element/Document etc
 @external(javascript, "../../event_ffi.mjs", "target")

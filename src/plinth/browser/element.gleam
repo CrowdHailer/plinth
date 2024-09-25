@@ -1,7 +1,18 @@
+import gleam/dynamic.{type Dynamic, DecodeError}
 import gleam/javascript/promise.{type Promise}
 import plinth/browser/event.{type Event}
 
 pub type Element
+
+@external(javascript, "../../element_ffi.mjs", "cast")
+fn do_cast(raw: Dynamic) -> Result(Element, Nil)
+
+pub fn cast(raw) {
+  case do_cast(raw) {
+    Ok(element) -> Ok(element)
+    Error(Nil) -> Error(DecodeError("Element", dynamic.classify(raw), []))
+  }
+}
 
 @external(javascript, "../../element_ffi.mjs", "addEventListener")
 pub fn add_event_listener(

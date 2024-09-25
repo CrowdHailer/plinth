@@ -1,5 +1,13 @@
 import { Ok, Error } from "./gleam.mjs";
 
+export function cast(raw) {
+  if (raw instanceof Element) {
+    return new Ok(raw)
+  } else {
+    return new Error()
+  }
+}
+
 export function getAttribute(element, name) {
   let attribute = element.getAttribute(name);
   if (attribute) {
