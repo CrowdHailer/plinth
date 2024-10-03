@@ -47,3 +47,11 @@ export function hidden() {
 export function visibilityState() {
   return document.visibilityState;
 }
+
+export function title() {
+  return document.title;
+}
+
+export function setTitle(title) {
+  document.title = title;
+}

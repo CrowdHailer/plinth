@@ -35,3 +35,13 @@ pub fn hidden() -> Bool
 /// attribute value of the current document. It should be either `"visible"` or `"hidden"`.
 @external(javascript, "../../document_ffi.mjs", "visibilityState")
 pub fn visibility_state() -> String
+
+/// Get the [`title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+/// attribute value of the current document.
+@external(javascript, "../../document_ffi.mjs", "title")
+pub fn title() -> String
+
+/// Set the [`title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+/// attribute value of the current document.
+@external(javascript, "../../document_ffi.mjs", "setTitle")
+pub fn set_title(title: String) -> Nil
