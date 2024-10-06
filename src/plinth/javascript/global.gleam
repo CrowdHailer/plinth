@@ -15,3 +15,9 @@ pub fn set_timeout(delay: Int, callback: fn() -> anything) -> TimerID
 
 @external(javascript, "../../global_ffi.mjs", "clearTimeout")
 pub fn clear_timeout(timer: TimerID) -> Nil
+
+@external(javascript, "../../global_ffi.mjs", "setInterval")
+pub fn set_interval(delay: Int, callback: fn() -> anything) -> TimerID
+
+@external(javascript, "../../global_ffi.mjs", "clearInterval")
+pub fn clear_interval(id: TimerID) -> Nil
