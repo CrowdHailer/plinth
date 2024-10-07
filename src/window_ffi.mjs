@@ -8,6 +8,15 @@ export function alert(message) {
   window.alert(message);
 }
 
+export function prompt(message, defaultValue) {
+  let text = window.prompt(message, defaultValue);
+  if (text !== null) {
+    return new Ok(text)
+  } else {
+    return new Error()
+  }
+}
+
 export function addEventListener(type, listener) {
   return window.addEventListener(type, listener);
 }
