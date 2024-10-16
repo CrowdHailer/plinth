@@ -18,7 +18,7 @@ pub fn cast(raw) {
 pub fn add_event_listener(
   a: Element,
   b: String,
-  c: fn(Event) -> Nil,
+  c: fn(Event(t)) -> Nil,
 ) -> fn() -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "getAttribute")

@@ -9,7 +9,7 @@ pub fn query_selector(selector: String) -> Result(Element, Nil)
 pub fn query_selector_all(selector: String) -> Array(Element)
 
 @external(javascript, "../../document_ffi.mjs", "addEventListener")
-pub fn add_event_listener(type_: String, listener: fn(Event) -> Nil) -> Nil
+pub fn add_event_listener(type_: String, listener: fn(Event(t)) -> Nil) -> Nil
 
 @external(javascript, "../../document_ffi.mjs", "createElement")
 pub fn create_element(tag_name: String) -> Element

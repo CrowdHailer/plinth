@@ -15,7 +15,7 @@ pub fn alert(a: String) -> Nil
 pub fn prompt(a: String) -> Result(String, Nil)
 
 @external(javascript, "../../window_ffi.mjs", "addEventListener")
-pub fn add_event_listener(type_: String, listener: fn(Event) -> Nil) -> Nil
+pub fn add_event_listener(type_: String, listener: fn(Event(t)) -> Nil) -> Nil
 
 pub type WakeLockSentinal
 
