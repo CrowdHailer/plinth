@@ -11,9 +11,9 @@ export function alert(message) {
 export function prompt(message, defaultValue) {
   let text = window.prompt(message, defaultValue);
   if (text !== null) {
-    return new Ok(text)
+    return new Ok(text);
   } else {
-    return new Error()
+    return new Error();
   }
 }
 

@@ -36,6 +36,10 @@ export function getElementById(id) {
   return new Ok(found);
 }
 
+export function getElementsByTagName(tagName) {
+  return Array.from(document.getElementsByTagName(tagName));
+}
+
 export function readyState() {
   return document.readyState;
 }

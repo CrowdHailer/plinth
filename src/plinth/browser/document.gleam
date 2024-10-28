@@ -23,6 +23,9 @@ pub fn body() -> Element
 @external(javascript, "../../document_ffi.mjs", "getElementById")
 pub fn get_element_by_id(id: String) -> Result(Element, Nil)
 
+@external(javascript, "../../document_ffi.mjs", "getElementsByTagName")
+pub fn get_elements_by_tag_name(tag_name: String) -> Array(Element)
+
 @external(javascript, "../../document_ffi.mjs", "readyState")
 pub fn ready_state() -> String
 
