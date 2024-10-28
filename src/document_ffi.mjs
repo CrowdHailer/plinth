@@ -1,4 +1,4 @@
-import { Ok, Error, toList } from "./gleam.mjs";
+import { Ok, Error } from "./gleam.mjs";
 
 export function querySelector(query) {
   let found = document.querySelector(query);
@@ -37,11 +37,7 @@ export function getElementById(id) {
 }
 
 export function getElementsByTagName(tagName) {
-  let found = document.getElementsByTagName(tagName);
-  if (!found) {
-    return new Error();
-  }
-  return new Ok(toList(found));
+  return Array.from(document.getElementsByTagName(tagName));
 }
 
 export function readyState() {
