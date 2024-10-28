@@ -166,7 +166,3 @@ export async function import_(string) {
     return new Error(error.toString());
   }
 }
-
-export function setTimeout(callback, delay) {
-  window.setTimeout(callback, delay);
-}

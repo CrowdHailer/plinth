@@ -119,6 +119,3 @@ pub fn eval(source: String) -> Result(dynamic.Dynamic, String)
 
 @external(javascript, "../../window_ffi.mjs", "import_")
 pub fn import_(source: String) -> Promise(Result(dynamic.Dynamic, String))
-
-@external(javascript, "../../window_ffi.mjs", "setTimeout")
-pub fn set_timeout(callback: fn() -> Nil, delay: Int) -> Nil
