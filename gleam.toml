@@ -1,5 +1,5 @@
 name = "plinth"
-version = "0.5.2"
+version = "0.5.3"
 description = "Bindings to Node.js and browser platform APIs"
 target = "javascript"
 
