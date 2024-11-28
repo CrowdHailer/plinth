@@ -8,9 +8,29 @@ export async function showDirectoryPicker() {
   }
 }
 
-export async function getFileHandle(directoryHandle, name) {
+export function name(handle) {
+  return handle.name
+}
+
+export async function getDirectoryHandle(directoryHandle, name, create) {
   try {
-    return new Ok(await directoryHandle.getFileHandle(name));
+    return new Ok(await directoryHandle.getDirectoryHandle(name, { create }));
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}
+
+export async function getFileHandle(directoryHandle, name, create) {
+  try {
+    return new Ok(await directoryHandle.getFileHandle(name, { create }));
+  } catch (error) {
+    return new Error(error.toString());
+  }
+}
+
+export async function removeEntry(directoryHandle, name, recursive) {
+  try {
+    return new Ok(await directoryHandle.removeEntry(name, { recursive }));
   } catch (error) {
     return new Error(error.toString());
   }
