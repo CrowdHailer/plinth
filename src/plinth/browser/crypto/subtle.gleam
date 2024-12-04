@@ -1,4 +1,5 @@
 import gleam/javascript/promise.{type Promise}
+import gleam/json.{type Json}
 
 pub type DigestAlgorithm {
   SHA1
@@ -29,7 +30,7 @@ pub fn digest(algorithm, data) {
 @external(javascript, "../../../plinth_browser_crypto_subtle_ffi.mjs", "verify")
 pub fn verify(
   alg: BitArray,
-  key: BitArray,
+  key: Json,
   signature: BitArray,
   data: BitArray,
 ) -> Promise(Bool)
