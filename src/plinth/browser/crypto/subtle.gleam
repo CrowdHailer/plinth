@@ -25,3 +25,11 @@ fn do_digest(
 pub fn digest(algorithm, data) {
   do_digest(digest_algorithm_to_string(algorithm), data)
 }
+
+@external(javascript, "../../../plinth_browser_crypto_subtle_ffi.mjs", "verify")
+pub fn verify(
+  alg: BitArray,
+  key: BitArray,
+  signature: BitArray,
+  data: BitArray,
+) -> Promise(Bool)
