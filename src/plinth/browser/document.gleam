@@ -1,6 +1,9 @@
 import gleam/javascript/array.{type Array}
+import gleam/javascript/promise.{type Promise}
 import plinth/browser/element.{type Element}
 import plinth/browser/event.{type Event}
+
+pub type Document
 
 @external(javascript, "../../document_ffi.mjs", "querySelector")
 pub fn query_selector(selector: String) -> Result(Element, Nil)
@@ -48,3 +51,11 @@ pub fn title() -> String
 /// attribute value of the current document.
 @external(javascript, "../../document_ffi.mjs", "setTitle")
 pub fn set_title(title: String) -> Nil
+
+/// returns the Element that is currently being presented in fullscreen mode in this document.
+@external(javascript, "../../document_ffi.mjs", "fullscreenElement")
+pub fn fullscreen_element(document: Document) -> Result(Element, Nil)
+
+/// exitFullscreen() requests that the element on this document which is currently being presented in fullscreen mode be taken out of fullscreen mode, restoring the previous state of the screen.
+@external(javascript, "../../document_ffi.mjs", "exitFullscreen")
+pub fn exit_fullscreen(document: Document) -> Promise(Result(Nil, String))

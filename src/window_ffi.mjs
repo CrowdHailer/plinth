@@ -21,6 +21,10 @@ export function addEventListener(type, listener) {
   return window.addEventListener(type, listener);
 }
 
+export function document(window) {
+  return window.document;
+}
+
 export async function requestWakeLock() {
   try {
     return new Ok(await window.navigator.wakeLock.request("screen"));

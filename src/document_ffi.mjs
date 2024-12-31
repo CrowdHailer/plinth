@@ -59,3 +59,19 @@ export function title() {
 export function setTitle(title) {
   document.title = title;
 }
+
+export function fullscreenElement(document) {
+  let found = document.fullscreenElement;
+  if (!found) {
+    return new Error();
+  }
+  return new Ok(found);
+}
+
+export async function exitFullscreen(document) {
+  try {
+    return new Ok(await document.exitFullscreen())
+  } catch (error) {
+    return new Error(`${error}`)
+  }
+}

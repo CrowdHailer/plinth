@@ -1,6 +1,7 @@
 import gleam/dynamic
 import gleam/javascript/promise.{type Promise}
 import gleam/json.{type Json}
+import plinth/browser/document.{type Document}
 import plinth/browser/event.{type Event}
 
 pub type Window
@@ -16,6 +17,9 @@ pub fn prompt(a: String) -> Result(String, Nil)
 
 @external(javascript, "../../window_ffi.mjs", "addEventListener")
 pub fn add_event_listener(type_: String, listener: fn(Event(t)) -> Nil) -> Nil
+
+@external(javascript, "../../window_ffi.mjs", "document")
+pub fn document(window: Window) -> Document
 
 pub type WakeLockSentinal
 
