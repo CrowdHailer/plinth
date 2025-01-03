@@ -167,3 +167,6 @@ pub fn set_text_content(element: Element, text: String) -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "getChecked")
 pub fn get_checked(element: Element) -> Bool
+
+@external(javascript, "../../element_ffi.mjs", "contains")
+pub fn contains(element: Element, other: Element) -> Bool

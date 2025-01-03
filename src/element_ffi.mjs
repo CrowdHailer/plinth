@@ -171,3 +171,7 @@ export function getChecked(el) {
 export function setTextContent(element, text) {
   element.textContent = text;
 }
+
+export function contains(element, other) {
+  return element.contains(other);
+}
