@@ -172,5 +172,5 @@ pub fn get_checked(element: Element) -> Bool
 @external(javascript, "../../element_ffi.mjs", "contains")
 pub fn contains(element: Element, other: Element) -> Bool
 
-@external(javascript, "../../element_ffi.mjs", "getClassList")
-pub fn get_class_list(element: Element) -> DomTokenList
+@external(javascript, "../../element_ffi.mjs", "classList")
+pub fn class_list(element: Element) -> DomTokenList

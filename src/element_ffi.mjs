@@ -176,6 +176,6 @@ export function contains(element, other) {
   return element.contains(other);
 }
 
-export function getClassList(element) {
+export function classList(element) {
   return element.classList;
 }
