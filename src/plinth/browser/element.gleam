@@ -170,3 +170,27 @@ pub fn get_checked(element: Element) -> Bool
 
 @external(javascript, "../../element_ffi.mjs", "contains")
 pub fn contains(element: Element, other: Element) -> Bool
+
+pub fn add_class(element: Element, classname: String) -> Nil {
+  add_classes(element, [classname])
+}
+
+@external(javascript, "../../element_ffi.mjs", "addClass")
+pub fn add_classes(element: Element, classnames: List(String)) -> Nil
+
+pub fn remove_class(element: Element, classname: String) -> Nil {
+  remove_classes(element, [classname])
+}
+
+@external(javascript, "../../element_ffi.mjs", "removeClass")
+pub fn remove_classes(element: Element, classnames: List(String)) -> Nil
+
+pub fn toggle_class(element: Element, classname: String) -> Nil {
+  toggle_class_when(element, classname, True)
+}
+
+@external(javascript, "../../element_ffi.mjs", "toggleClass")
+pub fn toggle_class_when(element: Element, classname: String, predicate: Bool) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "replaceClass")
+pub fn replace_class(element: Element, from_class: String, to_class: String) -> Nil

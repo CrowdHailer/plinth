@@ -175,3 +175,19 @@ export function setTextContent(element, text) {
 export function contains(element, other) {
   return element.contains(other);
 }
+
+export function addClass(element, classnames) {
+  element.classList.add(...classnames);
+}
+
+export function removeClass(element, classnames) {
+  element.classList.remove(...classnames);
+}
+
+export function toggleClass(element, classname, predicate) {
+  element.classList.toggle(classname, predicate ?? true);
+}
+
+export function replaceClass(element, from, to) {
+  element.classList.replace(from, to);
+}
