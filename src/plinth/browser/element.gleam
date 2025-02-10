@@ -190,7 +190,15 @@ pub fn toggle_class(element: Element, classname: String) -> Nil {
 }
 
 @external(javascript, "../../element_ffi.mjs", "toggleClass")
-pub fn toggle_class_when(element: Element, classname: String, predicate: Bool) -> Nil
+pub fn toggle_class_when(
+  element: Element,
+  classname: String,
+  predicate: Bool,
+) -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "replaceClass")
-pub fn replace_class(element: Element, from_class: String, to_class: String) -> Nil
+pub fn replace_class(
+  element: Element,
+  from_class: String,
+  to_class: String,
+) -> Nil
