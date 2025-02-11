@@ -9,9 +9,9 @@ export function remove(domTokenList, tokens) {
 }
 
 export function toggle(domTokenList, token, force) {
-  domTokenList.toggle(token, unwrap(force, undefined));
+  return domTokenList.toggle(token, unwrap(force, undefined));
 }
 
 export function replace(domTokenList, from, to) {
-  domTokenList.replace(from, to);
+  return domTokenList.replace(from, to);
 }
