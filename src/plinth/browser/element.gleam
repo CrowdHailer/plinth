@@ -1,5 +1,6 @@
 import gleam/dynamic.{type Dynamic, DecodeError}
 import gleam/javascript/promise.{type Promise}
+import plinth/browser/dom_token_list.{type DomTokenList}
 import plinth/browser/event.{type Event}
 
 pub type Element
@@ -170,3 +171,6 @@ pub fn get_checked(element: Element) -> Bool
 
 @external(javascript, "../../element_ffi.mjs", "contains")
 pub fn contains(element: Element, other: Element) -> Bool
+
+@external(javascript, "../../element_ffi.mjs", "classList")
+pub fn class_list(element: Element) -> DomTokenList

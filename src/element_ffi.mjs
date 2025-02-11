@@ -175,3 +175,7 @@ export function setTextContent(element, text) {
 export function contains(element, other) {
   return element.contains(other);
 }
+
+export function classList(element) {
+  return element.classList;
+}
