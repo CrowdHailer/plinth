@@ -1,4 +1,5 @@
 import gleam/dynamic
+import gleam/dynamic/decode
 import gleam/javascript/promise
 import gleam/option.{type Option}
 import gleam/string
@@ -21,30 +22,31 @@ pub type GeolocationPosition {
   )
 }
 
-pub fn decode(raw) {
-  dynamic.decode8(
-    GeolocationPosition,
-    dynamic.field("coords", dynamic.field("latitude", dynamic.float)),
-    dynamic.field("coords", dynamic.field("longitude", dynamic.float)),
-    dynamic.field(
-      "coords",
-      dynamic.field("altitude", dynamic.optional(dynamic.float)),
-    ),
-    dynamic.field("coords", dynamic.field("accuracy", dynamic.float)),
-    dynamic.field(
-      "coords",
-      dynamic.field("altitudeAccuracy", dynamic.optional(dynamic.float)),
-    ),
-    dynamic.field(
-      "coords",
-      dynamic.field("heading", dynamic.optional(dynamic.float)),
-    ),
-    dynamic.field(
-      "coords",
-      dynamic.field("speed", dynamic.optional(dynamic.float)),
-    ),
-    dynamic.field("timestamp", dynamic.float),
-  )(raw)
+pub fn decoder() {
+  use timestamp <- decode.field("timestamp", decode.float)
+  use n <- decode.field("coords", {
+    use latitude <- decode.field("latitude", decode.float)
+    use longitude <- decode.field("longitude", decode.float)
+    use altitude <- decode.field("altitude", decode.optional(decode.float))
+    use accuracy <- decode.field("accuracy", decode.float)
+    use altitude_accuracy <- decode.field(
+      "altitudeAccuracy",
+      decode.optional(decode.float),
+    )
+    use heading <- decode.field("heading", decode.optional(decode.float))
+    use speed <- decode.field("speed", decode.optional(decode.float))
+    decode.success(GeolocationPosition(
+      latitude,
+      longitude,
+      altitude,
+      accuracy,
+      altitude_accuracy,
+      heading,
+      speed,
+      timestamp,
+    ))
+  })
+  decode.success(n)
 }
 
 @external(javascript, "../../geolocation_ffi.mjs", "getCurrentPosition")
@@ -57,7 +59,7 @@ pub fn current_position() {
   promise.new(fn(resolve) {
     get_current_position(
       fn(position) {
-        case decode(dynamic.from(position)) {
+        case decode.run(dynamic.from(position), decoder()) {
           Ok(position) -> Ok(position)
           Error(reason) -> Error(string.inspect(reason))
         }
