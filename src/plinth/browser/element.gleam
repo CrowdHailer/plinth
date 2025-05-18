@@ -1,4 +1,5 @@
-import gleam/dynamic.{type Dynamic, DecodeError}
+import gleam/dynamic
+import gleam/dynamic/decode.{type Dynamic, DecodeError}
 import gleam/javascript/promise.{type Promise}
 import plinth/browser/dom_token_list.{type DomTokenList}
 import plinth/browser/event.{type Event}

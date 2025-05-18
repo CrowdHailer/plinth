@@ -1,4 +1,5 @@
-import gleam/dynamic.{type Dynamic, DecodeError}
+import gleam/dynamic
+import gleam/dynamic/decode.{type Dynamic, DecodeError}
 
 fn wrap_cast(raw, f) {
   case f(raw) {
