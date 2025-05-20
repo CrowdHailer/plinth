@@ -1,4 +1,3 @@
-import conversation
 import gleam/json.{type Json}
 import plinth/browser/message.{type Client, type Message}
 
@@ -53,11 +52,9 @@ pub fn client_id(event: FetchEvent) -> String
 @external(javascript, "../../service_worker_ffi.mjs", "fetchEventClient")
 pub fn fetch_event_client(event: FetchEvent) -> Client
 
-type Request =
-  conversation.JsRequest
+pub type Request
 
-type Response =
-  conversation.JsResponse
+pub type Response
 
 @external(javascript, "../../service_worker_ffi.mjs", "request")
 pub fn request(event: FetchEvent) -> Request
