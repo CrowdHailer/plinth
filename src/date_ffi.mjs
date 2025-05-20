@@ -11,7 +11,7 @@ export function toISOString(d) {
 }
 
 export function year(d) {
-  return d.getYear();
+  return d.getFullYear();
 }
 
 export function month(d) {
