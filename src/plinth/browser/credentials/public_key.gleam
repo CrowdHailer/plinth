@@ -265,7 +265,7 @@ fn creation_options_to_native(options: CreationOptions) -> NativeCreationOptions
   case parse_creation_options_from_json(dynamic.from(options)) {
     Ok(options) -> options
     Error(reason) -> {
-      io.debug(reason)
+      io.println(reason)
       panic as "should be valid by construction"
     }
   }
@@ -322,7 +322,7 @@ fn request_options_to_native(options: RequestOptions) -> NativeRequestOptions {
   case parse_request_options_from_json(dynamic.from(options)) {
     Ok(options) -> options
     Error(reason) -> {
-      io.debug(reason)
+      io.println(reason)
       panic as "should be valid by construction"
     }
   }
