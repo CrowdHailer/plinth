@@ -37,3 +37,7 @@ export function minutes(d) {
 export function seconds(d) {
   return d.getSeconds();
 }
+
+export function getTime(d) {
+  return Math.floor(d.getTime());
+}

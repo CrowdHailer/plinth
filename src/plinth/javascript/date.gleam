@@ -31,3 +31,6 @@ pub fn minutes(date: Date) -> Int
 
 @external(javascript, "../../date_ffi.mjs", "seconds")
 pub fn seconds(date: Date) -> Int
+
+@external(javascript, "../../date_ffi.mjs", "getTime")
+pub fn get_time(date: Date) -> Int
