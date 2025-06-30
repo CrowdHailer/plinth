@@ -12,6 +12,10 @@ pub fn argv() -> Array(String)
 @external(javascript, "process", "cwd")
 pub fn cwd() -> String
 
+/// The process.env property returns an object containing the user environment
+@external(javascript, "../../node_process_ffi.mjs", "env")
+pub fn env() -> Array(#(String, String))
+
 /// instructs Node.js to terminate the process synchronously with an exit status of `code`.
 /// Node.js will not terminate until all the `exit` event listeners are called.
 @external(javascript, "process", "exit")
