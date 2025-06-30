@@ -1,12 +1,8 @@
-import gleam/dynamic
+import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode
 import gleam/javascript/promise
 import gleam/option.{type Option}
 import gleam/string
-
-pub type JSGeolocationPosition
-
-pub type JSGeolocationPositionError
 
 pub type GeolocationPosition {
   GeolocationPosition(
@@ -51,15 +47,15 @@ pub fn decoder() {
 
 @external(javascript, "../../geolocation_ffi.mjs", "getCurrentPosition")
 pub fn get_current_position(
-  success: fn(JSGeolocationPosition) -> Nil,
-  error: fn(JSGeolocationPositionError) -> Nil,
+  success: fn(Dynamic) -> Nil,
+  error: fn(Dynamic) -> Nil,
 ) -> Nil
 
 pub fn current_position() {
   promise.new(fn(resolve) {
     get_current_position(
       fn(position) {
-        case decode.run(dynamic.from(position), decoder()) {
+        case decode.run(position, decoder()) {
           Ok(position) -> Ok(position)
           Error(reason) -> Error(string.inspect(reason))
         }

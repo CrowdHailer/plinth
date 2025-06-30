@@ -1,5 +1,4 @@
 import gleam/bit_array
-import gleam/dynamic.{type Dynamic}
 import gleam/io
 import gleam/javascript/promise.{type Promise}
 import gleam/json.{type Json}
@@ -181,7 +180,7 @@ pub type NativeCreationOptions
 
 @external(javascript, "../../../plinth_browser_credentials_ffi.mjs", "parseCreationOptionsFromJSON")
 pub fn parse_creation_options_from_json(
-  options: Dynamic,
+  options: Json,
 ) -> Result(NativeCreationOptions, String)
 
 @external(javascript, "../../../plinth_browser_credentials_ffi.mjs", "createForPublicKey")
@@ -262,7 +261,7 @@ fn creation_options_to_native(options: CreationOptions) -> NativeCreationOptions
         json.array(options.hints, fn(h) { json.string(hint_to_string(h)) }),
       ),
     ])
-  case parse_creation_options_from_json(dynamic.from(options)) {
+  case parse_creation_options_from_json(options) {
     Ok(options) -> options
     Error(reason) -> {
       io.println(reason)
@@ -279,7 +278,7 @@ pub type NativeRequestOptions
 
 @external(javascript, "../../../plinth_browser_credentials_ffi.mjs", "parseRequestOptionsFromJSON")
 pub fn parse_request_options_from_json(
-  options: Dynamic,
+  options: Json,
 ) -> Result(NativeRequestOptions, String)
 
 fn allow_exclude_credential_to_json(credential_id) {
@@ -319,7 +318,7 @@ fn request_options_to_native(options: RequestOptions) -> NativeRequestOptions {
         json.string(requirement_to_string(options.user_verification)),
       ),
     ])
-  case parse_request_options_from_json(dynamic.from(options)) {
+  case parse_request_options_from_json(options) {
     Ok(options) -> options
     Error(reason) -> {
       io.println(reason)
