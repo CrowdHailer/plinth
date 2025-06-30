@@ -4,10 +4,11 @@ import gleeunit/should
 import plinth/javascript/compression_stream.{compress}
 import plinth/javascript/decompression_stream.{decompress}
 
-pub fn gzip_test() {
-  use data <- promise.await(compress(hello(), "gzip"))
-  data
-  |> should.equal(gzipped_hello())
+pub fn gzip_round_trip_test() {
+  use compressed <- promise.await(compress(hello(), "gzip"))
+  use decompressed <- promise.await(decompress(compressed, "gzip"))
+  decompressed
+  |> should.equal(hello())
 
   promise.resolve(Ok(Nil))
 }
