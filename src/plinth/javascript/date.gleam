@@ -1,6 +1,4 @@
-pub type Date {
-  Date
-}
+pub type Date
 
 @external(javascript, "../../date_ffi.mjs", "now")
 pub fn now() -> Date
