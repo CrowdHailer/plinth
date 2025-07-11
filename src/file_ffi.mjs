@@ -1,7 +1,7 @@
 import { BitArray } from "./gleam.mjs";
 
 export function new_(fileBits, fileName) {
-  return new File([fileBits.buffer], fileName);
+  return new File([fileBits.rawBuffer], fileName);
 }
 
 export async function bytes(file) {

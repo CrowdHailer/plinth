@@ -87,7 +87,7 @@ export async function createWritable(fileHandle) {
 
 export async function write(writableStream, bitArray) {
   try {
-    return new Ok(await writableStream.write(bitArray.buffer));
+    return new Ok(await writableStream.write(bitArray.rawBuffer));
   } catch (error) {
     return new Error(error.toString());
   }

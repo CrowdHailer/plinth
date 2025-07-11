@@ -2,7 +2,7 @@ import { toBitArray } from "../gleam_stdlib/gleam.mjs"
 
 export const compress = async (data, encoding) => {
   const ds = new CompressionStream(encoding);
-  const blob = new Blob([data.buffer])
+  const blob = new Blob([data.rawBuffer])
   const compressedStream = blob.stream().pipeThrough(ds)
 
   const compressed = await new Response(compressedStream).blob()
