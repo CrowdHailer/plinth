@@ -23,6 +23,9 @@ pub type UIEvent(sub)
 @external(javascript, "../../event_ffi.mjs", "target")
 pub fn target(event: Event(t)) -> Dynamic
 
+@external(javascript, "../../event_ffi.mjs", "currentTarget")
+pub fn current_target(event: Event(t)) -> Dynamic
+
 @external(javascript, "../../event_ffi.mjs", "preventDefault")
 pub fn prevent_default(event: Event(t)) -> Nil
 
