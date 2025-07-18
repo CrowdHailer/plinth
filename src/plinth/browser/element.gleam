@@ -158,6 +158,9 @@ pub fn set_value(element: Element, value: String) -> Nil
 @external(javascript, "../../element_ffi.mjs", "focus")
 pub fn focus(element: Element) -> Nil
 
+@external(javascript, "../../element_ffi.mjs", "blur")
+pub fn blur(element: Element) -> Nil
+
 @external(javascript, "../../element_ffi.mjs", "selectionStart")
 pub fn selection_start(element: Element) -> Result(Int, Nil)
 

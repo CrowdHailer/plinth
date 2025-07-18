@@ -16,6 +16,10 @@ export function target(event) {
   return event.target;
 }
 
+export function currentTarget(event) {
+  return event.currentTarget;
+}
+
 export function preventDefault(event) {
   return event.preventDefault();
 }

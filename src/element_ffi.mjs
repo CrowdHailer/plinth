@@ -2,9 +2,9 @@ import { Ok, Error } from "./gleam.mjs";
 
 export function cast(raw) {
   if (raw instanceof Element) {
-    return new Ok(raw)
+    return new Ok(raw);
   } else {
-    return new Error()
+    return new Error();
   }
 }
 
@@ -147,6 +147,10 @@ export function setSelectionRange(element, start, end) {
 
 export function focus(element) {
   element.focus();
+}
+
+export function blur(element) {
+  element.blur();
 }
 
 export function appendChild(parent, child) {
