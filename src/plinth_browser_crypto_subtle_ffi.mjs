@@ -1,5 +1,6 @@
 import { toBitArray } from "../gleam_stdlib/gleam.mjs"
 import { Ok, Error } from "./gleam.mjs";
+import * as mod from "./plinth/browser/crypto/subtle.mjs"
 
 export async function digest(algorithm, data) {
   try {
@@ -28,9 +29,37 @@ export async function exportJwk(key) {
   }
 }
 
+function generateKeyAlgorithm(algorithm) {
+  if (algorithm instanceof mod.RsaHashedKeyGenParams) {
+    return {
+      name: algorithm.name,
+      modulusLength: algorithm.modulus_length,
+      publicExponent: algorithm.public_exponent.rawBuffer,
+      hash: digestAlgorithm(algorithm.hash)
+    }
+  } else if (algorithm instanceof EcKeyGenParams) {
+    return {
+      name: algorithm.name,
+      namedCurve: algorithm.named_curve
+    }
+  }
+}
+
+function digestAlgorithm(hash) {
+  if (hash instanceof mod.SHA1) {
+    return "SHA-1"
+  } else if (hash instanceof mod.SHA256) {
+    return "SHA-256"
+  } else if (hash instanceof mod.SHA384) {
+    return "SHA-384"
+  } else if (hash instanceof mod.SHA512) {
+    return "SHA-512"
+  }
+}
+
 export async function generateKey(algorithm, extractable, keyUsages) {
   try {
-    let { publicKey, privateKey } = await globalThis.crypto.subtle.generateKey(algorithm, extractable, keyUsages);
+    let { publicKey, privateKey } = await globalThis.crypto.subtle.generateKey(generateKeyAlgorithm(algorithm), extractable, keyUsages);
     return new Ok([publicKey, privateKey])
   } catch (error) {
     return new Error(`${error}`)

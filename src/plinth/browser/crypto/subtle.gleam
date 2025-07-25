@@ -37,14 +37,12 @@ pub fn export_jwk(key: CryptoKey) -> Promise(Result(Json, String))
 
 @external(javascript, "../../../plinth_browser_crypto_subtle_ffi.mjs", "generateKey")
 fn do_generate_key(
-  algorithm: Json,
+  algorithm: PublicKeyAlgorithm,
   extractable: Bool,
   key_usages: Array(String),
 ) -> Promise(Result(#(CryptoKey, CryptoKey), String))
 
 pub fn generate_key(algorithm, extractable, key_usages) {
-  let algorithm = public_key_algorithm_to_json(algorithm)
-
   let key_usages =
     key_usages
     |> list.map(key_usage_to_string)
@@ -53,17 +51,15 @@ pub fn generate_key(algorithm, extractable, key_usages) {
 }
 
 pub type PublicKeyAlgorithm {
+  RsaHashedKeyGenParams(
+    name: String,
+    // This should be at least 2048: see for example see SP 800-131A Rev. 2. Some organizations are now recommending that it should be 4096.
+    modulus_length: Int,
+    // Unless you have a good reason to use something else, specify 65537 here ([0x01, 0x00, 0x01]).
+    public_exponent: BitArray,
+    hash: DigestAlgorithm,
+  )
   EcKeyGenParams(name: String, named_curve: String)
-}
-
-fn public_key_algorithm_to_json(key_algorithm) {
-  case key_algorithm {
-    EcKeyGenParams(name:, named_curve:) ->
-      json.object([
-        #("name", json.string(name)),
-        #("namedCurve", json.string(named_curve)),
-      ])
-  }
 }
 
 pub type KeyUsage {
