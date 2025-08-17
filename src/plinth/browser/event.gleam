@@ -63,3 +63,9 @@ pub fn meta_key(event: Event(UIEvent(KeyboardEvent))) -> Bool
 
 @external(javascript, "../../event_ffi.mjs", "shiftKey")
 pub fn shift_key(event: Event(UIEvent(KeyboardEvent))) -> Bool
+
+@external(javascript, "../../event_ffi.mjs", "property")
+pub fn property(event: Event(t), property: String) -> Dynamic
+
+@external(javascript, "../../event_ffi.mjs", "detail")
+pub fn detail(event: Event(t)) -> Dynamic

@@ -59,3 +59,11 @@ export function metaKey(event) {
 export function shiftKey(event) {
   return event.shiftKey;
 }
+
+export function property(event, key) {
+  return event[key];
+}
+
+export function detail(event) {
+  return event.detail;
+}
