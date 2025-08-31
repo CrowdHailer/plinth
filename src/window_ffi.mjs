@@ -8,6 +8,10 @@ export function alert(message) {
   window.alert(message);
 }
 
+export function confirm(message) {
+  return window.confirm(message)
+}
+
 export function prompt(message, defaultValue) {
   let text = window.prompt(message, defaultValue);
   if (text !== null) {
