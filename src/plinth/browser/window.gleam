@@ -12,6 +12,9 @@ pub fn self() -> Window
 @external(javascript, "../../window_ffi.mjs", "alert")
 pub fn alert(a: String) -> Nil
 
+@external(javascript, "../../window_ffi.mjs", "confirm")
+pub fn confirm(a: String) -> Bool
+
 @external(javascript, "../../window_ffi.mjs", "prompt")
 pub fn prompt(a: String) -> Result(String, Nil)
 
