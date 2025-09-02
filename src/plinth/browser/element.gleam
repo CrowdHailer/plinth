@@ -108,6 +108,20 @@ pub fn next_element_sibling(element: Element) -> Result(Element, Nil)
 @external(javascript, "../../element_ffi.mjs", "closest")
 pub fn closest(element: Element, selector: String) -> Result(Element, Nil)
 
+/// Returns the first element that is a descendant of the element on which it is invoked that matches the specified group of selectors.
+/// Binding of [`Element.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector).
+@external(javascript, "../../element_ffi.mjs", "querySelector")
+pub fn query_selector(
+  element: Element,
+  selector: String,
+) -> Result(Element, Nil)
+
+/// Returns a list of elements matching the specified group of selectors
+/// which are descendants of the passed element.
+/// Binding of [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll).
+@external(javascript, "../../element_ffi.mjs", "querySelectorAll")
+pub fn query_selector_all(element: Element, selector: String) -> List(Element)
+
 @external(javascript, "../../element_ffi.mjs", "requestFullscreen")
 pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))
 

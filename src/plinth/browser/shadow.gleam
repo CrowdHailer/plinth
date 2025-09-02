@@ -1,4 +1,3 @@
-import gleam/javascript/array.{type Array}
 import plinth/browser/element.{type Element}
 
 pub type ShadowRoot
@@ -31,4 +30,4 @@ pub fn query_selector(
 pub fn query_selector_all(
   shadow_root: ShadowRoot,
   selector: String,
-) -> Array(Element)
+) -> List(Element)
