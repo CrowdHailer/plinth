@@ -117,7 +117,7 @@ pub fn query_selector(
   selector: String,
 ) -> Result(Element, Nil)
 
-/// Returns a list of elements matching the specified group of selectors
+/// Returns an array of elements matching the specified group of selectors
 /// which are descendants of the passed element.
 /// Binding of [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll).
 @external(javascript, "../../element_ffi.mjs", "querySelectorAll")

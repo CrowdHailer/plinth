@@ -10,7 +10,7 @@ pub type Document
 @external(javascript, "../../document_ffi.mjs", "querySelector")
 pub fn query_selector(selector: String) -> Result(Element, Nil)
 
-/// Returns a list of all the Element nodes within the document that match the specified selectors.
+/// Returns an listbcarray of all the Element nodes within the document that match the specified selectors.
 /// Binding of [`Document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll).
 @external(javascript, "../../document_ffi.mjs", "querySelectorAll")
 pub fn query_selector_all(selector: String) -> Array(Element)
