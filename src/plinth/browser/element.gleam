@@ -1,5 +1,6 @@
 import gleam/dynamic
 import gleam/dynamic/decode.{type Dynamic, DecodeError}
+import gleam/javascript/array.{type Array}
 import gleam/javascript/promise.{type Promise}
 import plinth/browser/dom_token_list.{type DomTokenList}
 import plinth/browser/event.{type Event}
@@ -120,7 +121,7 @@ pub fn query_selector(
 /// which are descendants of the passed element.
 /// Binding of [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll).
 @external(javascript, "../../element_ffi.mjs", "querySelectorAll")
-pub fn query_selector_all(element: Element, selector: String) -> List(Element)
+pub fn query_selector_all(element: Element, selector: String) -> Array(Element)
 
 @external(javascript, "../../element_ffi.mjs", "requestFullscreen")
 pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))

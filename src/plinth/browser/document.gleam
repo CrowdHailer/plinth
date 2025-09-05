@@ -1,3 +1,4 @@
+import gleam/javascript/array.{type Array}
 import gleam/javascript/promise.{type Promise}
 import plinth/browser/element.{type Element}
 import plinth/browser/event.{type Event}
@@ -12,7 +13,7 @@ pub fn query_selector(selector: String) -> Result(Element, Nil)
 /// Returns a list of all the Element nodes within the document that match the specified selectors.
 /// Binding of [`Document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll).
 @external(javascript, "../../document_ffi.mjs", "querySelectorAll")
-pub fn query_selector_all(selector: String) -> List(Element)
+pub fn query_selector_all(selector: String) -> Array(Element)
 
 @external(javascript, "../../document_ffi.mjs", "addEventListener")
 pub fn add_event_listener(type_: String, listener: fn(Event(t)) -> Nil) -> Nil
@@ -29,10 +30,8 @@ pub fn body() -> Element
 @external(javascript, "../../document_ffi.mjs", "getElementById")
 pub fn get_element_by_id(id: String) -> Result(Element, Nil)
 
-/// Returns a list of elements with the given tag name.
-/// Binding of [`Document.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
 @external(javascript, "../../document_ffi.mjs", "getElementsByTagName")
-pub fn get_elements_by_tag_name(tag_name: String) -> List(Element)
+pub fn get_elements_by_tag_name(tag_name: String) -> Array(Element)
 
 @external(javascript, "../../document_ffi.mjs", "readyState")
 pub fn ready_state() -> String
