@@ -5,7 +5,7 @@ target = "javascript"
 
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "Crowdhailer", repo = "plinth" }
-gleam = ">= 1.9.0"
+gleam = ">= 1.13.0"
 
 [dependencies]
 gleam_stdlib = ">= 0.29.0 and < 2.0.0"

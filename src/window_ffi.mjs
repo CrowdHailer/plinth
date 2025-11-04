@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function self() {
   return globalThis;
@@ -15,9 +15,9 @@ export function confirm(message) {
 export function prompt(message, defaultValue) {
   let text = window.prompt(message, defaultValue);
   if (text !== null) {
-    return new Ok(text);
+    return Result$Ok(text);
   } else {
-    return new Error();
+    return Result$Error();
   }
 }
 
@@ -31,9 +31,9 @@ export function document(window) {
 
 export async function requestWakeLock() {
   try {
-    return new Ok(await window.navigator.wakeLock.request("screen"));
+    return Result$Ok(await window.navigator.wakeLock.request("screen"));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
@@ -43,9 +43,9 @@ export function location() {
 
 export function locationOf(w) {
   try {
-    return new Ok(w.location.href);
+    return Result$Ok(w.location.href);
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
@@ -76,19 +76,19 @@ export function focus(w) {
 export function getHash() {
   const hash = window.location.hash;
   if (hash == "") {
-    return new Error();
+    return Result$Error();
   }
 
-  return new Ok(decodeURIComponent(hash.slice(1)));
+  return Result$Ok(decodeURIComponent(hash.slice(1)));
 }
 
 export function getSearch() {
   const search = window.location.search;
   if (search == "") {
-    return new Error();
+    return Result$Error();
   }
 
-  return new Ok(decodeURIComponent(search.slice(1)));
+  return Result$Ok(decodeURIComponent(search.slice(1)));
 }
 
 export function innerHeight(w) {
@@ -133,9 +133,9 @@ export function scrollY(w) {
 
 export function open(url, target, features) {
   try {
-    return new Ok(window.open(url, target, features));
+    return Result$Ok(window.open(url, target, features));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
@@ -161,16 +161,16 @@ export function cancelAnimationFrame(callback) {
 
 export function eval_(string) {
   try {
-    return new Ok(eval(string));
+    return Result$Ok(eval(string));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
 export async function import_(string) {
   try {
-    return new Ok(await import(string));
+    return Result$Ok(await import(string));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }

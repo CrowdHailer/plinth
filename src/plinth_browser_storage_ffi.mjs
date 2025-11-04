@@ -1,43 +1,43 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function getStorage() {
   const storage = globalThis?.navigator?.storage
   if (globalThis.StorageManager && storage instanceof StorageManager) {
-    return new Ok(storage)
+    return Result$Ok(storage)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 
 export async function estimate(storageManager) {
   try {
     const { quota, usage } = await storageManager.estimate()
-    return new Ok([quota, usage])
+    return Result$Ok([quota, usage])
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
 export async function getDirectory(storageManager) {
   try {
-    return new Ok(await storageManager.getDirectory())
+    return Result$Ok(await storageManager.getDirectory())
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
 export async function persist(storageManager) {
   try {
-    return new Ok(await storageManager.persist())
+    return Result$Ok(await storageManager.persist())
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
 export async function persisted(storageManager) {
   try {
-    return new Ok(await storageManager.persisted())
+    return Result$Ok(await storageManager.persisted())
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }

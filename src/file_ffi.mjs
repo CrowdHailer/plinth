@@ -1,11 +1,11 @@
-import { BitArray } from "./gleam.mjs";
+import { BitArray$BitArray } from "./gleam.mjs";
 
 export function new_(fileBits, fileName) {
   return new File([fileBits.rawBuffer], fileName);
 }
 
 export async function bytes(file) {
-  return new BitArray(new Uint8Array(await file.arrayBuffer()))
+  return BitArray$BitArray(new Uint8Array(await file.arrayBuffer()))
 }
 
 export function text(file) {

@@ -1,10 +1,10 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function newWorker(script) {
   try {
-    return new Ok(new Worker(script));
+    return Result$Ok(new Worker(script));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 

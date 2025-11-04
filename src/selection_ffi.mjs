@@ -1,17 +1,17 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function getSelection() {
   const selection = window.getSelection();
   if (!selection) {
-    return new Error();
+    return Result$Error();
   }
-  return new Ok(selection);
+  return Result$Ok(selection);
 }
 
 export function getRangeAt(selection, index) {
   const range = selection.getRangeAt(index);
   if (!range) {
-    return new Error();
+    return Result$Error();
   }
-  return new Ok(range);
+  return Result$Ok(range);
 }

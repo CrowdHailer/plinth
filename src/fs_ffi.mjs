@@ -1,18 +1,18 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 import fs from "node:fs";
 
 export function readFileSync(path) {
   try {
-    return new Ok(fs.readFileSync(path, "utf8"))
+    return Result$Ok(fs.readFileSync(path, "utf8"))
   } catch (error) {
-    return new Error(error.toString())
+    return Result$Error(error.toString())
   }
 }
 
 export function writeFileSync(path, content) {
   try {
-    return new Ok(fs.writeFileSync(path, content))
+    return Result$Ok(fs.writeFileSync(path, content))
   } catch (error) {
-    return new Error(error.toString())
+    return Result$Error(error.toString())
   }
 }

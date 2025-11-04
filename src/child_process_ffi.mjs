@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 import child_process from "node:child_process"
 
 export const kill = (childProcess) =>
@@ -8,4 +8,4 @@ export const spawn = (cmd, args) =>
   child_process.spawn(cmd, args.toArray())
 
 export const stdin = (childProcess) =>
-  childProcess.stdin ? new Ok(childProcess.stdin) : new Error()
+  childProcess.stdin ? Result$Ok(childProcess.stdin) : Result$Error()
