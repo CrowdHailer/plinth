@@ -1,19 +1,19 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function cast(raw) {
   if (raw instanceof Element) {
-    return new Ok(raw);
+    return Result$Ok(raw);
   } else {
-    return new Error();
+    return Result$Error();
   }
 }
 
 export function getAttribute(element, name) {
   let attribute = element.getAttribute(name);
   if (attribute) {
-    return new Ok(attribute);
+    return Result$Ok(attribute);
   }
-  return new Error();
+  return Result$Error();
 }
 
 export function setAttribute(element, name, value) {
@@ -38,50 +38,50 @@ export function setInnerText(element, content) {
 
 export function insertAdjacentElement(target, position, element) {
   try {
-    return new Ok(target.insertAdjacentElement(position, element));
+    return Result$Ok(target.insertAdjacentElement(position, element));
   } catch (error) {
-    return new Error(`${error}`);
+    return Result$Error(`${error}`);
   }
 }
 
 export function insertAdjacentHTML(target, position, element) {
   try {
-    return new Ok(target.insertAdjacentHTML(position, element));
+    return Result$Ok(target.insertAdjacentHTML(position, element));
   } catch (error) {
-    return new Error(`${error}`);
+    return Result$Error(`${error}`);
   }
 }
 
 export function insertAdjacentText(target, position, element) {
   try {
-    return new Ok(target.insertAdjacentText(position, element));
+    return Result$Ok(target.insertAdjacentText(position, element));
   } catch (error) {
-    return new Error(`${error}`);
+    return Result$Error(`${error}`);
   }
 }
 
 export function nextElementSibling(element) {
   let sibling = element.nextElementSibling;
   if (sibling) {
-    return new Ok(sibling);
+    return Result$Ok(sibling);
   }
-  return new Error();
+  return Result$Error();
 }
 
 export function closest(element, selector) {
   let ancestor = element.closest(selector);
   if (ancestor) {
-    return new Ok(ancestor);
+    return Result$Ok(ancestor);
   }
-  return new Error();
+  return Result$Error();
 }
 
 export async function requestFullscreen(element) {
   try {
     await element.requestFullscreen();
-    return new Ok();
+    return Result$Ok();
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
@@ -124,9 +124,9 @@ export function setScrollWidth(element, value) {
 export function value(element) {
   let value = element.value;
   if (value != undefined) {
-    return new Ok(value);
+    return Result$Ok(value);
   }
-  return new Error();
+  return Result$Error();
 }
 
 export function setValue(element, value) {
@@ -136,9 +136,9 @@ export function setValue(element, value) {
 export function selectionStart(element) {
   let value = element.selectionStart;
   if (value != undefined) {
-    return new Ok(value);
+    return Result$Ok(value);
   }
-  return new Error();
+  return Result$Error();
 }
 
 export function setSelectionRange(element, start, end) {
@@ -163,9 +163,9 @@ export function remove(element) {
 
 export function datasetGet(el, key) {
   if (key in el.dataset) {
-    return new Ok(el.dataset[key]);
+    return Result$Ok(el.dataset[key]);
   }
-  return new Error(undefined);
+  return Result$Error(undefined);
 }
 
 export function getChecked(el) {

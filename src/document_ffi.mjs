@@ -1,11 +1,11 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function querySelector(query) {
   let found = document.querySelector(query);
   if (!found) {
-    return new Error();
+    return Result$Error();
   }
-  return new Ok(found);
+  return Result$Ok(found);
 }
 
 export function querySelectorAll(query) {
@@ -31,9 +31,9 @@ export function body() {
 export function getElementById(id) {
   let found = document.getElementById(id);
   if (!found) {
-    return new Error();
+    return Result$Error();
   }
-  return new Ok(found);
+  return Result$Ok(found);
 }
 
 export function getElementsByTagName(tagName) {
@@ -63,15 +63,15 @@ export function setTitle(title) {
 export function fullscreenElement(document) {
   let found = document.fullscreenElement;
   if (!found) {
-    return new Error();
+    return Result$Error();
   }
-  return new Ok(found);
+  return Result$Ok(found);
 }
 
 export async function exitFullscreen(document) {
   try {
-    return new Ok(await document.exitFullscreen())
+    return Result$Ok(await document.exitFullscreen())
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }

@@ -1,4 +1,4 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function newAudio(url) {
   return new Audio(url);
@@ -7,8 +7,8 @@ export function newAudio(url) {
 export async function play(audio) {
   try {
     await audio.play();
-    return new Ok();
+    return Result$Ok();
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }

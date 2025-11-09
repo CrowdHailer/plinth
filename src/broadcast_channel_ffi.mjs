@@ -1,18 +1,18 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function new_(channelName) {
   try {
-    return new Ok(new BroadcastChannel(channelName));
+    return Result$Ok(new BroadcastChannel(channelName));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 
 export function postMessage(worker, message) {
   try {
-    return new Ok(worker.postMessage(message));
+    return Result$Ok(worker.postMessage(message));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 

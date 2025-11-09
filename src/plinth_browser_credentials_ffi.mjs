@@ -1,11 +1,11 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function fromNavigator() {
   const credentials = globalThis?.navigator?.credentials
   if (globalThis.CredentialsContainer && credentials instanceof CredentialsContainer) {
-    return new Ok(credentials)
+    return Result$Ok(credentials)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 
@@ -32,17 +32,17 @@ export async function isUserVerifyingPlatformAuthenticatorAvailable() {
 
 export function parseCreationOptionsFromJSON(options) {
   try {
-    return new Ok(globalThis.PublicKeyCredential.parseCreationOptionsFromJSON(options))
+    return Result$Ok(globalThis.PublicKeyCredential.parseCreationOptionsFromJSON(options))
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
 export function parseRequestOptionsFromJSON(options) {
   try {
-    return new Ok(globalThis.PublicKeyCredential.parseRequestOptionsFromJSON(options))
+    return Result$Ok(globalThis.PublicKeyCredential.parseRequestOptionsFromJSON(options))
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
@@ -101,9 +101,9 @@ export function toJSON(credential) {
 
 export async function createForPublicKey(container, options) {
   try {
-    return new Ok(await container.create({ publicKey: options }))
+    return Result$Ok(await container.create({ publicKey: options }))
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }
 
@@ -121,8 +121,8 @@ export function JSONObject(entries) {
 
 export async function getForPublicKey(container, options) {
   try {
-    return new Ok(await container.get({ publicKey: options }))
+    return Result$Ok(await container.get({ publicKey: options }))
   } catch (error) {
-    return new Error(`${error}`)
+    return Result$Error(`${error}`)
   }
 }

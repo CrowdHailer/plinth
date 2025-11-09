@@ -1,10 +1,10 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 function cast(raw, constructor) {
   if (raw instanceof constructor) {
-    return new Ok(raw)
+    return Result$Ok(raw)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 

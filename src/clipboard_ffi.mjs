@@ -1,18 +1,18 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export async function readText() {
-    try {
-      return new Ok(await globalThis.navigator.clipboard.readText());
-    } catch (error) {
-      return new Error(error.toString());
-    }
+  try {
+    return Result$Ok(await globalThis.navigator.clipboard.readText());
+  } catch (error) {
+    return Result$Error(error.toString());
   }
-  
+}
+
 export async function writeText(clipText) {
   try {
-    return new Ok(await globalThis.navigator.clipboard.writeText(clipText));
+    return Result$Ok(await globalThis.navigator.clipboard.writeText(clipText));
   } catch (error) {
-    return new Error(error.toString());
+    return Result$Error(error.toString());
   }
 }
 

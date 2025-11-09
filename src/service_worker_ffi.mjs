@@ -1,11 +1,11 @@
-import { Ok, Error } from "./gleam.mjs";
+import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function self() {
   const s = globalThis
   if (s.ServiceWorkerGlobalScope && s instanceof ServiceWorkerGlobalScope) {
-    return new Ok(s)
+    return Result$Ok(s)
   }
-  return new Error("nope")
+  return Result$Error("nope")
 }
 
 export async function skipWaiting(self) {
@@ -60,9 +60,9 @@ export function request(event) {
 
 export function respondWith(event, response) {
   try {
-    return new Ok(event.respondWith(response))
+    return Result$Ok(event.respondWith(response))
   } catch (error) {
-    return new Error(error.toString())
+    return Result$Error(error.toString())
   }
 }
 
@@ -77,9 +77,9 @@ export function frameType(client) {
 export async function clientGet(self, id) {
   const client = await self.clients.get(id)
   if (client) {
-    return new Ok(client)
+    return Result$Ok(client)
   }
-  return new Error()
+  return Result$Error()
 }
 
 export async function openWindow(self, url) {
@@ -88,9 +88,9 @@ export async function openWindow(self, url) {
 
 export async function register(scriptURL) {
   try {
-    return new Ok(await navigator.serviceWorker.register(scriptURL))
+    return Result$Ok(await navigator.serviceWorker.register(scriptURL))
   } catch (error) {
-    return new Error(error.toString())
+    return Result$Error(error.toString())
   }
 }
 
@@ -101,27 +101,27 @@ export async function ready() {
 export function active(registration) {
   const serviceWorker = registration.active
   if (serviceWorker) {
-    return new Ok(serviceWorker)
+    return Result$Ok(serviceWorker)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 
 export function installing(registration) {
   const serviceWorker = registration.installing
   if (serviceWorker) {
-    return new Ok(serviceWorker)
+    return Result$Ok(serviceWorker)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 
 export function waiting(registration) {
   const serviceWorker = registration.waiting
   if (serviceWorker) {
-    return new Ok(serviceWorker)
+    return Result$Ok(serviceWorker)
   } else {
-    return new Error()
+    return Result$Error()
   }
 }
 
