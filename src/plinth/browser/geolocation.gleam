@@ -1,5 +1,6 @@
 import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode
+import gleam/int
 import gleam/javascript/promise
 import gleam/option.{type Option}
 import gleam/string
@@ -19,7 +20,10 @@ pub type GeolocationPosition {
 }
 
 pub fn decoder() {
-  use timestamp <- decode.field("timestamp", decode.float)
+  use timestamp <- decode.field(
+    "timestamp",
+    decode.one_of(decode.float, [decode.map(decode.int, int.to_float)]),
+  )
   use n <- decode.field("coords", {
     use latitude <- decode.field("latitude", decode.float)
     use longitude <- decode.field("longitude", decode.float)
