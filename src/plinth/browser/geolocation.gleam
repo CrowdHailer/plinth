@@ -1,9 +1,9 @@
 import gleam/dynamic.{type Dynamic}
 import gleam/dynamic/decode
-import gleam/int
 import gleam/javascript/promise
 import gleam/option.{type Option}
 import gleam/string
+import plinth/decodex
 
 pub type GeolocationPosition {
   GeolocationPosition(
@@ -20,21 +20,24 @@ pub type GeolocationPosition {
 }
 
 pub fn decoder() {
-  use timestamp <- decode.field(
-    "timestamp",
-    decode.one_of(decode.float, [decode.map(decode.int, int.to_float)]),
-  )
+  use timestamp <- decode.field("timestamp", decodex.float_or_int())
   use n <- decode.field("coords", {
-    use latitude <- decode.field("latitude", decode.float)
-    use longitude <- decode.field("longitude", decode.float)
-    use altitude <- decode.field("altitude", decode.optional(decode.float))
-    use accuracy <- decode.field("accuracy", decode.float)
+    use latitude <- decode.field("latitude", decodex.float_or_int())
+    use longitude <- decode.field("longitude", decodex.float_or_int())
+    use altitude <- decode.field(
+      "altitude",
+      decode.optional(decodex.float_or_int()),
+    )
+    use accuracy <- decode.field("accuracy", decodex.float_or_int())
     use altitude_accuracy <- decode.field(
       "altitudeAccuracy",
-      decode.optional(decode.float),
+      decode.optional(decodex.float_or_int()),
     )
-    use heading <- decode.field("heading", decode.optional(decode.float))
-    use speed <- decode.field("speed", decode.optional(decode.float))
+    use heading <- decode.field(
+      "heading",
+      decode.optional(decodex.float_or_int()),
+    )
+    use speed <- decode.field("speed", decode.optional(decodex.float_or_int()))
     decode.success(GeolocationPosition(
       latitude,
       longitude,
