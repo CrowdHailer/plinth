@@ -1,6 +1,7 @@
 import gleam/dynamic
 import gleam/javascript/promise.{type Promise}
 import gleam/json.{type Json}
+import plinth/browser/crypto
 import plinth/browser/document.{type Document}
 import plinth/browser/event.{type Event}
 
@@ -8,6 +9,9 @@ pub type Window
 
 @external(javascript, "../../window_ffi.mjs", "self")
 pub fn self() -> Window
+
+@external(javascript, "../../window_ffi.mjs", "crypto")
+pub fn crypto(self: Window) -> Result(crypto.Crypto, Nil)
 
 @external(javascript, "../../window_ffi.mjs", "alert")
 pub fn alert(a: String) -> Nil

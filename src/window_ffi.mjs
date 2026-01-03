@@ -1,5 +1,13 @@
 import { Result$Ok, Result$Error } from "./gleam.mjs";
 
+export function crypto(self) {
+  const crypto = self.crypto
+  if (crypto && crypto instanceof globalThis.Crypto) {
+    return Result$Ok(crypto)
+  }
+  return Result$Error()
+}
+
 export function self() {
   return globalThis;
 }
