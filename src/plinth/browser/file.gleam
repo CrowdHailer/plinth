@@ -1,4 +1,5 @@
 import gleam/javascript/promise.{type Promise}
+import plinth/browser/blob.{type Blob}
 
 pub type File
 
@@ -12,6 +13,9 @@ pub fn text(file: File) -> Promise(String)
 
 @external(javascript, "../../file_ffi.mjs", "bytes")
 pub fn bytes(file: File) -> Promise(BitArray)
+
+@external(javascript, "../../file_ffi.mjs", "slice")
+pub fn slice(file: File, start: Int, end: Int) -> Blob
 
 @external(javascript, "../../file_ffi.mjs", "name")
 pub fn name(file: File) -> String
