@@ -4,6 +4,10 @@ export function new_(fileBits, fileName) {
   return new File([fileBits.rawBuffer], fileName);
 }
 
+export function slice(file, start, end) {
+  return file.slice(start, end);
+}
+
 export async function bytes(file) {
   return BitArray$BitArray(new Uint8Array(await file.arrayBuffer()))
 }
