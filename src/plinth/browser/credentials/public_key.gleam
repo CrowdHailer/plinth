@@ -43,6 +43,8 @@ pub type CreationOptions {
   )
 }
 
+/// Create an object with all the default creation options set.
+/// The arguments to this function are the creation options that must be unique to each creation.
 pub fn creation(
   challenge,
   algorithm,
@@ -270,6 +272,7 @@ fn creation_options_to_native(options: CreationOptions) -> NativeCreationOptions
   }
 }
 
+/// Create a new public key credential.
 pub fn create(container, options) {
   do_create(container, creation_options_to_native(options))
 }

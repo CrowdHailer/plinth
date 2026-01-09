@@ -36,7 +36,7 @@ function generateKeyAlgorithm(algorithm) {
       publicExponent: algorithm.public_exponent.rawBuffer,
       hash: digestAlgorithm(algorithm.hash)
     }
-  } else if (algorithm instanceof EcKeyGenParams) {
+  } else if (algorithm instanceof mod.EcKeyGenParams) {
     return {
       name: algorithm.name,
       namedCurve: algorithm.named_curve
