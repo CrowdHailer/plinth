@@ -45,58 +45,13 @@ export async function requestWakeLock() {
   }
 }
 
-export function location() {
-  return window.location.href;
+export function location(window) {
+  return window.location;
 }
 
-export function locationOf(w) {
-  try {
-    return Result$Ok(w.location.href);
-  } catch (error) {
-    return Result$Error(error.toString());
-  }
-}
-
-export function setLocation(w, url) {
-  w.location.href = url;
-}
-
-export function origin() {
-  return window.location.origin;
-}
-
-export function pathname() {
-  return window.location.pathname;
-}
-
-export function reload() {
-  return window.location.reload();
-}
-
-export function reloadOf(w) {
-  return w.location.reload();
-}
 
 export function focus(w) {
   return w.focus();
-}
-
-export function getHash() {
-  const hash = window.location.hash;
-  if (hash == "") {
-    return Result$Error();
-  }
-
-  return Result$Ok(decodeURIComponent(hash.slice(1)));
-}
-
-export function getSearch() {
-  const search = window.location.search;
-  if (search == "") {
-    return Result$Error();
-  }
-
-  return Result$Ok(decodeURIComponent(search.slice(1)));
 }
 
 export function innerHeight(w) {
@@ -138,6 +93,27 @@ export function scrollX(w) {
 export function scrollY(w) {
   return w.scrollY;
 }
+
+export function opener(window) {
+  const opener = window.opener
+  if (opener) {
+    return Result$Ok(opener)
+  } else {
+    return Result$Error()
+  }
+}
+
+export function postMessage(window, message, targetOrigin) {
+  window.postMessage(message, targetOrigin)
+}
+
+export function onMessage(worker, callback) {
+  worker.addEventListener("message", function (message) {
+    callback(message);
+  });
+}
+
+// on message cast event
 
 export function open(url, target, features) {
   try {

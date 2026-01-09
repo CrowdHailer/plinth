@@ -4,6 +4,9 @@ import gleam/json.{type Json}
 import plinth/browser/crypto
 import plinth/browser/document.{type Document}
 import plinth/browser/event.{type Event}
+import plinth/browser/location.{type Location}
+import plinth/browser/message_event
+import plinth/browser/window_proxy.{type WindowProxy}
 
 pub type Window
 
@@ -35,37 +38,10 @@ pub type WakeLockSentinal
 pub fn request_wake_lock() -> Promise(Result(WakeLockSentinal, Nil))
 
 @external(javascript, "../../window_ffi.mjs", "location")
-pub fn location() -> String
-
-@external(javascript, "../../window_ffi.mjs", "locationOf")
-pub fn location_of(window: Window) -> Result(String, String)
-
-@external(javascript, "../../window_ffi.mjs", "setLocation")
-pub fn set_location(window: Window, url: String) -> Nil
-
-@external(javascript, "../../window_ffi.mjs", "origin")
-pub fn origin() -> String
-
-@external(javascript, "../../window_ffi.mjs", "pathname")
-pub fn pathname() -> String
-
-// reload exists on the location object but exposed at top level here
-@external(javascript, "../../window_ffi.mjs", "reload")
-pub fn reload() -> Nil
-
-@external(javascript, "../../window_ffi.mjs", "reloadOf")
-pub fn reload_of(window: Window) -> Nil
+pub fn location(window: Window) -> Location
 
 @external(javascript, "../../window_ffi.mjs", "focus")
 pub fn focus(window: Window) -> Nil
-
-// I'm not sure how much value there is in specific hash/search function
-
-@external(javascript, "../../window_ffi.mjs", "getHash")
-pub fn get_hash() -> Result(String, Nil)
-
-@external(javascript, "../../window_ffi.mjs", "getSearch")
-pub fn get_search() -> Result(String, Nil)
 
 @external(javascript, "../../window_ffi.mjs", "innerHeight")
 pub fn inner_height(window: Window) -> Int
@@ -97,15 +73,24 @@ pub fn scroll_x(window: Window) -> Int
 @external(javascript, "../../window_ffi.mjs", "scrollY")
 pub fn scroll_y(window: Window) -> Int
 
-@external(javascript, "../../worker_ffi.mjs", "onMessage")
-pub fn on_message(worker: Window, handle: fn(Json) -> Nil) -> Nil
+@external(javascript, "../../window_ffi.mjs", "opener")
+pub fn opener(window: Window) -> Result(WindowProxy, Nil)
+
+@external(javascript, "../../window_ffi.mjs", "onMessage")
+pub fn on_message(
+  worker: Window,
+  handle: fn(message_event.MessageEvent) -> Nil,
+) -> Nil
 
 @external(javascript, "../../window_ffi.mjs", "open")
 pub fn open(
   url: String,
   name: String,
   features: String,
-) -> Result(Window, String)
+) -> Result(WindowProxy, String)
+
+@external(javascript, "../../window_ffi.mjs", "postMessage")
+pub fn post_message(proxy: Window, message: Json, origin: String) -> Nil
 
 @external(javascript, "../../window_ffi.mjs", "close")
 pub fn close(window: Window) -> Bool
