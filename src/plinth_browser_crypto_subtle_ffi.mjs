@@ -13,7 +13,7 @@ export async function digest(algorithm, data) {
 export async function exportKey(format, key) {
   try {
     let exported = await globalThis.crypto.subtle.exportKey(format, key);
-    return Result$Ok(exported)
+    return Result$Ok(BitArray$BitArray(new Uint8Array(exported)))
   } catch (error) {
     return Result$Error(`${error}`)
   }
@@ -40,6 +40,10 @@ function generateKeyAlgorithm(algorithm) {
     return {
       name: algorithm.name,
       namedCurve: algorithm.named_curve
+    }
+  } else if (algorithm instanceof mod.Ed25519GenParams) {
+    return {
+      name: "Ed25519",
     }
   }
 }

@@ -31,6 +31,31 @@ pub fn digest(algorithm, data) {
 
 pub type CryptoKey
 
+pub type Format {
+  Raw
+  Pkcs8
+  Spki
+}
+
+fn format_to_string(format) {
+  case format {
+    Raw -> "raw"
+    Pkcs8 -> "pkcs8"
+    Spki -> "spki"
+  }
+}
+
+@external(javascript, "../../../plinth_browser_crypto_subtle_ffi.mjs", "exportKey")
+fn do_export(
+  format: String,
+  key: CryptoKey,
+) -> Promise(Result(BitArray, String))
+
+/// https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/exportKey
+pub fn export(key, format) {
+  do_export(format_to_string(format), key)
+}
+
 /// export Jwk is separate because it returns JSON, other formats return array buffer 
 @external(javascript, "../../../plinth_browser_crypto_subtle_ffi.mjs", "exportJwk")
 pub fn export_jwk(key: CryptoKey) -> Promise(Result(Json, String))
@@ -60,6 +85,7 @@ pub type PublicKeyAlgorithm {
     hash: DigestAlgorithm,
   )
   EcKeyGenParams(name: String, named_curve: String)
+  Ed25519GenParams
 }
 
 pub type KeyUsage {
