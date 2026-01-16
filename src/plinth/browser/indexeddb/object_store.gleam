@@ -22,7 +22,7 @@ fn do_put(
 
 pub fn put(
   object_store: ObjectStore,
-  item: t,
+  item: Dynamic,
   key: Option(String),
 ) -> Promise(Result(String, String)) {
   let key = case key {
