@@ -183,3 +183,15 @@ export function contains(element, other) {
 export function classList(element) {
   return element.classList;
 }
+
+export function querySelector(element, selector) {
+  let found = element.querySelector(selector);
+  if (!found) {
+    return new Error();
+  }
+  return new Ok(found);
+}
+
+export function querySelectorAll(element, selector) {
+  return Array.from(element.querySelectorAll(selector));
+}
