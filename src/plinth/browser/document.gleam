@@ -5,9 +5,13 @@ import plinth/browser/event.{type Event}
 
 pub type Document
 
+/// Returns the first Element node within the document, in document order, that matches the specified selectors.
+/// Binding of [`Document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector).
 @external(javascript, "../../document_ffi.mjs", "querySelector")
 pub fn query_selector(selector: String) -> Result(Element, Nil)
 
+/// Returns an listbcarray of all the Element nodes within the document that match the specified selectors.
+/// Binding of [`Document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll).
 @external(javascript, "../../document_ffi.mjs", "querySelectorAll")
 pub fn query_selector_all(selector: String) -> Array(Element)
 
