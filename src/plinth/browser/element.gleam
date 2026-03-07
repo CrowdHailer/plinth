@@ -46,6 +46,9 @@ pub fn set_inner_text(element: Element, value: String) -> Nil
 @external(javascript, "../../element_ffi.mjs", "innerText")
 pub fn inner_text(element: Element) -> String
 
+@external(javascript, "../../element_ffi.mjs", "textContent")
+pub fn text_content(element: Element) -> String
+
 pub type Position {
   BeforeBegin
   AfterBegin

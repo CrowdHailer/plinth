@@ -36,6 +36,10 @@ export function setInnerHTML(element, content) {
   element.innerHTML = content;
 }
 
+export function textContent(element) {
+  return element.textContent;
+}
+
 export function innerText(element) {
   return element.innerText;
 }
