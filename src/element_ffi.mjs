@@ -24,6 +24,10 @@ export function removeAttribute(element, name) {
   element.removeAttribute(name);
 }
 
+export function getBoundingClientRect(element) {
+  return element.getBoundingClientRect();
+}
+
 export function addEventListener(element, type, listener) {
   return element.addEventListener(type, listener);
 }
@@ -87,6 +91,22 @@ export async function requestFullscreen(element) {
   } catch (error) {
     return Result$Error(error.toString());
   }
+}
+
+export function clientHeight(element) {
+  return element.clientHeight;
+}
+
+export function clientLeft(element) {
+  return element.clientLeft;
+}
+
+export function clientTop(element) {
+  return element.clientTop;
+}
+
+export function clientWidth(element) {
+  return element.clientWidth;
 }
 
 export function scrollIntoView(element) {

@@ -2,6 +2,7 @@ import gleam/dynamic
 import gleam/dynamic/decode.{type Dynamic, DecodeError}
 import gleam/javascript/array.{type Array}
 import gleam/javascript/promise.{type Promise}
+import plinth/browser/dom_rect.{type DomRect}
 import plinth/browser/dom_token_list.{type DomTokenList}
 import plinth/browser/event.{type Event}
 
@@ -32,6 +33,9 @@ pub fn set_attribute(element: Element, name: String, value: String) -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "removeAttribute")
 pub fn remove_attribute(element: Element, name: String) -> Nil
+
+@external(javascript, "../../element_ffi.mjs", "getBoundingClientRect")
+pub fn get_bounding_client_rect(element: Element) -> DomRect
 
 @external(javascript, "../../element_ffi.mjs", "setInnerHTML")
 pub fn set_inner_html(element: Element, value: String) -> Nil
@@ -128,6 +132,18 @@ pub fn query_selector_all(element: Element, selector: String) -> Array(Element)
 
 @external(javascript, "../../element_ffi.mjs", "requestFullscreen")
 pub fn request_fullscreen(element: Element) -> Promise(Result(Nil, String))
+
+@external(javascript, "../../element_ffi.mjs", "clientHeight")
+pub fn client_height(element: Element) -> Int
+
+@external(javascript, "../../element_ffi.mjs", "clientLeft")
+pub fn client_left(element: Element) -> Int
+
+@external(javascript, "../../element_ffi.mjs", "clientTop")
+pub fn client_top(element: Element) -> Int
+
+@external(javascript, "../../element_ffi.mjs", "clientWidth")
+pub fn client_width(element: Element) -> Int
 
 @external(javascript, "../../element_ffi.mjs", "scrollIntoView")
 pub fn scroll_into_view(element: Element) -> Nil
