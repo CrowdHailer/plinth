@@ -30,6 +30,9 @@ pub fn get_attribute(element: Element, name: String) -> Result(String, Nil)
 @external(javascript, "../../element_ffi.mjs", "setAttribute")
 pub fn set_attribute(element: Element, name: String, value: String) -> Nil
 
+@external(javascript, "../../element_ffi.mjs", "removeAttribute")
+pub fn remove_attribute(element: Element, name: String) -> Nil
+
 @external(javascript, "../../element_ffi.mjs", "setInnerHTML")
 pub fn set_inner_html(element: Element, value: String) -> Nil
 

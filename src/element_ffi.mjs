@@ -20,6 +20,10 @@ export function setAttribute(element, name, value) {
   element.setAttribute(name, value);
 }
 
+export function removeAttribute(element, name) {
+  element.removeAttribute(name);
+}
+
 export function addEventListener(element, type, listener) {
   return element.addEventListener(type, listener);
 }
