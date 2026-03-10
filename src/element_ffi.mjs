@@ -10,7 +10,7 @@ export function cast(raw) {
 
 export function getAttribute(element, name) {
   let attribute = element.getAttribute(name);
-  if (attribute) {
+  if (attribute !== null) {
     return Result$Ok(attribute);
   }
   return Result$Error();
