@@ -10,7 +10,7 @@ pub fn pathname(location: Location) -> String
 pub fn reload(location: Location) -> Nil
 
 @external(javascript, "../../location_ffi.mjs", "href")
-pub fn href(location: Location) -> Result(String, Nil)
+pub fn href(location: Location) -> String
 
 @external(javascript, "../../location_ffi.mjs", "hash")
 pub fn hash(location: Location) -> Result(String, Nil)
