@@ -92,7 +92,8 @@ export function signature(credential) {
 }
 
 export function userHandle(credential) {
-  return credential.response.userHandle
+  const handle = credential.response.userHandle;
+  return handle ? Result$Ok(new Uint8Array(handle)) : Result$Error(undefined);
 }
 
 export function toJSON(credential) {
