@@ -393,4 +393,4 @@ pub fn authenticator_data(credential: Credential(Assertion)) -> BitArray
 pub fn signature(credential: Credential(Assertion)) -> BitArray
 
 @external(javascript, "../../../plinth_browser_credentials_ffi.mjs", "userHandle")
-pub fn user_handle(credential: Credential(Assertion)) -> BitArray
+pub fn user_handle(credential: Credential(Assertion)) -> Result(BitArray, Nil)
