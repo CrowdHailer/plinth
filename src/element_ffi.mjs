@@ -158,6 +158,10 @@ export function setScrollWidth(element, value) {
   element.scrollWidth = value;
 }
 
+export function scrollTo(element, top, left, behavior) {
+  element.scrollTo({ top, left, behavior });
+}
+
 export function value(element) {
   let value = element.value;
   if (value != undefined) {

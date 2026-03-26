@@ -172,6 +172,15 @@ pub fn set_scroll_left(element: Element, value: Float) -> Nil
 @external(javascript, "../../element_ffi.mjs", "setScrollTop")
 pub fn set_scroll_top(element: Element, value: Float) -> Nil
 
+/// behaviour is one of smooth, instant, auto
+@external(javascript, "../../element_ffi.mjs", "scrollTo")
+pub fn scroll_to(
+  element: Element,
+  top: Float,
+  left: Float,
+  behaviour: String,
+) -> Nil
+
 @external(javascript, "../../element_ffi.mjs", "setScrollWidth")
 pub fn set_scroll_width(element: Element, value: Float) -> Nil
 
