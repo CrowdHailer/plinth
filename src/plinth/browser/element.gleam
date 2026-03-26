@@ -175,6 +175,9 @@ pub fn set_scroll_top(element: Element, value: Float) -> Nil
 @external(javascript, "../../element_ffi.mjs", "setScrollWidth")
 pub fn set_scroll_width(element: Element, value: Float) -> Nil
 
+@external(javascript, "../../element_ffi.mjs", "parentElement")
+pub fn parent_element(element: Element) -> Result(Element, Nil)
+
 @external(javascript, "../../element_ffi.mjs", "appendChild")
 pub fn append_child(parent: Element, child: Element) -> Nil
 

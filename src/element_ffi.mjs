@@ -16,6 +16,15 @@ export function getAttribute(element, name) {
   return Result$Error();
 }
 
+export function parentElement(element) {
+  let parent = element.parentElement;
+  if (parent !== null) {
+    return Result$Ok(parent);
+  }
+  return Result$Error();
+}
+
+
 export function setAttribute(element, name, value) {
   element.setAttribute(name, value);
 }
