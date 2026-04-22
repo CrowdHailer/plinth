@@ -230,7 +230,7 @@ export function querySelector(element, selector) {
   if (!found) {
     return new Error();
   }
-  return new Ok(found);
+  return Result$Ok(found);
 }
 
 export function querySelectorAll(element, selector) {
