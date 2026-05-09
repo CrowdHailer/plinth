@@ -236,3 +236,7 @@ export function querySelector(element, selector) {
 export function querySelectorAll(element, selector) {
   return Array.from(element.querySelectorAll(selector));
 }
+
+export function matches(element, selector) {
+  return element.matches(selector);
+}
