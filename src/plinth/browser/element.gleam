@@ -227,3 +227,8 @@ pub fn contains(element: Element, other: Element) -> Bool
 
 @external(javascript, "../../element_ffi.mjs", "classList")
 pub fn class_list(element: Element) -> DomTokenList
+
+/// Checks if an element matches a given selector.
+/// Binding of [`Element.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches).
+@external(javascript, "../../element_ffi.mjs", "matches")
+pub fn matches(element: Element, selector: String) -> Bool
