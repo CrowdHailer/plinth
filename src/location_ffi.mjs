@@ -4,6 +4,22 @@ export function origin(location) {
   return location.origin;
 }
 
+export function host(location) {
+  return location.host;
+}
+
+export function hostname(location) {
+  return location.hostname;
+}
+
+export function port(location) {
+  return location.port;
+}
+
+export function protocol(location) {
+  return location.protocol;
+}
+
 export function pathname(location) {
   return location.pathname;
 }
