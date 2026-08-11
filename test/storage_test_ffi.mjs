@@ -25,7 +25,7 @@ class Storage {
   }
 
   getItem(k) {
-    return this.#items.get(k) || null;
+    return this.#items.get(k) ?? null;
   }
 
   setItem(k, v) {
@@ -93,4 +93,15 @@ export function runWithMockStorage(shouldThrow, shouldUndef, callback) {
       configurable: true,
     });
   }
+}
+
+export function runWithThrowingStorage(callback) {
+  const storage = new Storage();
+  storage.getItem = function () {
+    throw new Error("Get denied!");
+  };
+  storage.setItem = function () {
+    throw new Error("Set denied!");
+  };
+  callback(storage);
 }

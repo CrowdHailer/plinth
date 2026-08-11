@@ -1,24 +1,45 @@
 import gleam/list
+import gleam/option.{None, Some}
 import gleeunit/should
 import plinth/javascript/storage
 
 pub fn get_throw_test() {
   use <- run(True, False)
-  should.be_error(storage.local())
-  should.be_error(storage.session())
+  should.equal(storage.local(), Error("Error: ARGBL"))
+  should.equal(storage.session(), Error("Error: ARGBL"))
 }
 
 pub fn get_undef_test() {
   use <- run(False, True)
-  should.be_error(storage.local())
-  should.be_error(storage.session())
+  should.equal(storage.local(), Error("localStorage is not available"))
+  should.equal(storage.session(), Error("sessionStorage is not available"))
 }
 
 pub fn get_set_test() {
   use <- run(False, False)
   let assert Ok(local) = storage.local()
   should.be_ok(storage.set_item(local, "Foo", "Bar"))
-  should.equal(storage.get_item(local, "Foo"), Ok("Bar"))
+  should.equal(storage.get_item(local, "Foo"), Ok(Some("Bar")))
+}
+
+pub fn get_empty_string_test() {
+  use <- run(False, False)
+  let assert Ok(local) = storage.local()
+  should.be_ok(storage.set_item(local, "empty", ""))
+  should.equal(storage.get_item(local, "empty"), Ok(Some("")))
+  should.equal(storage.get_item(local, "missing"), Ok(None))
+}
+
+pub fn item_error_test() {
+  use denied_storage <- run_with_throwing_storage
+  should.equal(
+    storage.get_item(denied_storage, "Foo"),
+    Error("Error: Get denied!"),
+  )
+  should.equal(
+    storage.set_item(denied_storage, "Foo", "Bar"),
+    Error("Error: Set denied!"),
+  )
 }
 
 pub fn set_limit_test() {
@@ -29,7 +50,7 @@ pub fn set_limit_test() {
   should.be_ok(storage.set_item(session, "Foo3", "Bar"))
   should.be_ok(storage.set_item(session, "Foo4", "Bar"))
   should.be_ok(storage.set_item(session, "Foo5", "Bar"))
-  should.be_error(storage.set_item(session, "Foo6", "Bar"))
+  should.equal(storage.set_item(session, "Foo6", "Bar"), Error("Error: Full!"))
 }
 
 pub fn length_test() {
@@ -66,7 +87,7 @@ pub fn remove_test() {
   should.equal(storage.remove_item(local, "not here"), Nil)
   should.be_ok(storage.set_item(local, "Foo", "Bar"))
   should.equal(storage.remove_item(local, "Foo"), Nil)
-  should.be_error(storage.get_item(local, "Foo"))
+  should.equal(storage.get_item(local, "Foo"), Ok(None))
 }
 
 pub fn clear_test() {
@@ -83,3 +104,6 @@ pub fn clear_test() {
 
 @external(javascript, "../storage_test_ffi.mjs", "runWithMockStorage")
 fn run(should_throw: Bool, should_undef: Bool, callback: fn() -> a) -> Nil
+
+@external(javascript, "../storage_test_ffi.mjs", "runWithThrowingStorage")
+fn run_with_throwing_storage(callback: fn(storage.Storage) -> a) -> Nil

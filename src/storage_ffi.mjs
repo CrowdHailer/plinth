@@ -1,32 +1,31 @@
 import { Result$Ok, Result$Error } from "./gleam.mjs";
+import { Option$Some, Option$None } from "../gleam_stdlib/gleam/option.mjs";
 
 export function localStorage() {
   try {
-    if (
-      globalThis.Storage &&
-      globalThis.localStorage instanceof globalThis.Storage
-    ) {
-      return Result$Ok(globalThis.localStorage);
+    // accessing .localStorage can throw `SecurityError`
+    const storage = globalThis.localStorage;
+    if (globalThis.Storage && storage instanceof globalThis.Storage) {
+      return Result$Ok(storage);
     } else {
-      return Result$Error(null);
+      return Result$Error("localStorage is not available");
     }
-  } catch {
-    return Result$Error(null);
+  } catch (error) {
+    return Result$Error(`${error}`);
   }
 }
 
 export function sessionStorage() {
+  // accessing .sessionStorage can throw `SecurityError`
   try {
-    if (
-      globalThis.Storage &&
-      globalThis.sessionStorage instanceof globalThis.Storage
-    ) {
-      return Result$Ok(globalThis.sessionStorage);
+    const storage = globalThis.sessionStorage;
+    if (globalThis.Storage && storage instanceof globalThis.Storage) {
+      return Result$Ok(storage);
     } else {
-      return Result$Error(null);
+      return Result$Error("sessionStorage is not available");
     }
-  } catch {
-    return Result$Error(null);
+  } catch (error) {
+    return Result$Error(`${error}`);
   }
 }
 
@@ -35,19 +34,30 @@ export function length(storage) {
 }
 
 export function key(storage, index) {
-  return null_or(storage.key(index));
+  const value = storage.key(index);
+  if (value !== null) {
+    return Result$Ok(value);
+  } else {
+    return Result$Error();
+  }
 }
 
 export function getItem(storage, keyName) {
-  return null_or(storage.getItem(keyName));
+  try {
+    const value = storage.getItem(keyName);
+    const option = value === null ? Option$None() : Option$Some(value);
+    return Result$Ok(option);
+  } catch (error) {
+    return Result$Error(`${error}`);
+  }
 }
 
 export function setItem(storage, keyName, keyValue) {
   try {
     storage.setItem(keyName, keyValue);
     return Result$Ok(null);
-  } catch {
-    return Result$Error(null);
+  } catch (error) {
+    return Result$Error(`${error}`);
   }
 }
 
@@ -57,12 +67,4 @@ export function removeItem(storage, keyName) {
 
 export function clear(storage) {
   storage.clear();
-}
-
-function null_or(val) {
-  if (val !== null) {
-    return Result$Ok(val);
-  } else {
-    return Result$Error(null);
-  }
 }

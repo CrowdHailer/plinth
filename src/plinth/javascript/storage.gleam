@@ -1,5 +1,7 @@
 //// Bindings to local and session storage.
 
+import gleam/option.{type Option}
+
 /// A Storage object (local or session).
 /// 
 /// See [https://developer.mozilla.org/en-US/docs/Web/API/Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage).
@@ -7,11 +9,11 @@ pub type Storage
 
 /// Attempts to get the local storage object, fails if it's not available.
 @external(javascript, "../../storage_ffi.mjs", "localStorage")
-pub fn local() -> Result(Storage, Nil)
+pub fn local() -> Result(Storage, String)
 
 /// Attempts to get the session storage object, fails if it's not available.
 @external(javascript, "../../storage_ffi.mjs", "sessionStorage")
-pub fn session() -> Result(Storage, Nil)
+pub fn session() -> Result(Storage, String)
 
 /// Returns the amount of items in the storage.
 @external(javascript, "../../storage_ffi.mjs", "length")
@@ -21,9 +23,9 @@ pub fn length(storage: Storage) -> Int
 @external(javascript, "../../storage_ffi.mjs", "key")
 pub fn key(storage: Storage, index: Int) -> Result(String, Nil)
 
-/// Returns the item with the specified key, if it exists.
+/// Returns the item with the specified key, or `None` if it does not exist.
 @external(javascript, "../../storage_ffi.mjs", "getItem")
-pub fn get_item(storage: Storage, key: String) -> Result(String, Nil)
+pub fn get_item(storage: Storage, key: String) -> Result(Option(String), String)
 
 /// Adds or updates an item with the specified key. If the storage is full, an error is returned.
 @external(javascript, "../../storage_ffi.mjs", "setItem")
@@ -31,7 +33,7 @@ pub fn set_item(
   storage: Storage,
   key: String,
   value: String,
-) -> Result(Nil, Nil)
+) -> Result(Nil, String)
 
 /// Removes an item with the specified key.
 @external(javascript, "../../storage_ffi.mjs", "removeItem")

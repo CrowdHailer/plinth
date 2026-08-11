@@ -198,7 +198,9 @@ fn json_bitarry(bytes) {
 @external(javascript, "../../../plinth_browser_credentials_ffi.mjs", "JSONObject")
 fn json_object(entries: List(#(String, Json))) -> Json
 
-fn creation_options_to_native(options: CreationOptions) -> NativeCreationOptions {
+fn creation_options_to_native(
+  options: CreationOptions,
+) -> NativeCreationOptions {
   let options =
     json_object([
       #("attestation", json.string(attestation_to_string(options.attestation))),
