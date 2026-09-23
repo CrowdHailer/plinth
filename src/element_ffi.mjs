@@ -228,7 +228,7 @@ export function classList(element) {
 export function querySelector(element, selector) {
   let found = element.querySelector(selector);
   if (!found) {
-    return new Error();
+    return Result$Error();
   }
   return Result$Ok(found);
 }
