@@ -6,7 +6,7 @@ export function getRandomValues(crypto, length) {
     crypto.getRandomValues(array)
     return Result$Ok(BitArray$BitArray(array))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 

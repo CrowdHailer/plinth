@@ -13,7 +13,7 @@ export function factory_open(factory, name, version) {
   try {
     return Result$Ok(factory.open(name, version))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -25,7 +25,7 @@ export function open_db_on_success(request, callback) {
 
 export function open_db_on_error(request, callback) {
   request.onerror = function () {
-    callback(`${request.error}`)
+    callback(String(request.error))
   }
 }
 
@@ -52,7 +52,7 @@ export function database_create_object_store(database, name, options) {
   try {
     return Result$Ok(database.createObjectStore(name, options))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -61,7 +61,7 @@ export function database_transaction(database, store_names, mode, durability) {
     const transaction = database.transaction(store_names, mode, { durability })
     return Result$Ok(transaction)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -69,7 +69,7 @@ export function transaction_object_store(transaction, name) {
   try {
     return Result$Ok(transaction.objectStore(name))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -80,7 +80,7 @@ export async function object_store_get_all(object_store) {
     const results = await db_request_to_promise(db_request)
     return Result$Ok(results)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -91,7 +91,7 @@ export async function object_store_put(object_store, item, key) {
     const results = await db_request_to_promise(db_request)
     return Result$Ok(results)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 

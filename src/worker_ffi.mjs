@@ -4,7 +4,7 @@ export function newWorker(script) {
   try {
     return Result$Ok(new Worker(script));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 

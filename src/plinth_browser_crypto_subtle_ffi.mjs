@@ -6,7 +6,7 @@ export async function digest(algorithm, data) {
     let hashed = await globalThis.crypto.subtle.digest(algorithm, data.rawBuffer);
     return Result$Ok(BitArray$BitArray(new Uint8Array(hashed)))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -15,7 +15,7 @@ export async function exportKey(format, key) {
     let exported = await globalThis.crypto.subtle.exportKey(format, key);
     return Result$Ok(BitArray$BitArray(new Uint8Array(exported)))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -24,7 +24,7 @@ export async function exportJwk(key) {
     let exported = await globalThis.crypto.subtle.exportKey("jwk", key);
     return Result$Ok(exported)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -65,7 +65,7 @@ export async function generateKey(algorithm, extractable, keyUsages) {
     let { publicKey, privateKey } = await globalThis.crypto.subtle.generateKey(generateKeyAlgorithm(algorithm), extractable, keyUsages);
     return Result$Ok([publicKey, privateKey])
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -74,7 +74,7 @@ export async function importKey(format, keyData, algorithm, extractable, keyUsag
     let imported = await globalThis.crypto.subtle.importKey(format, keyData.rawBuffer, algorithm, extractable, keyUsages);
     return Result$Ok(imported)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -84,7 +84,7 @@ export async function importJwk(keyData, algorithm, extractable, keyUsages) {
     let imported = await globalThis.crypto.subtle.importKey("jwk", keyData, algorithm, extractable, keyUsages);
     return Result$Ok(imported)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -93,7 +93,7 @@ export async function sign(algorithm, key, data) {
     let signed = await globalThis.crypto.subtle.sign(algorithm, key, data.rawBuffer);
     return Result$Ok(BitArray$BitArray(new Uint8Array(signed)))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -102,6 +102,6 @@ export async function verify(algorithm, key, signature, data) {
     let valid = await globalThis.crypto.subtle.verify(algorithm, key, signature.rawBuffer, data.rawBuffer);
     return Result$Ok(valid)
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }

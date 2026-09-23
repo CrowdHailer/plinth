@@ -9,6 +9,6 @@ export async function play(audio) {
     await audio.play();
     return Result$Ok();
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }

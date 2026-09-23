@@ -61,7 +61,7 @@ export function insertAdjacentElement(target, position, element) {
   try {
     return Result$Ok(target.insertAdjacentElement(position, element));
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -69,7 +69,7 @@ export function insertAdjacentHTML(target, position, element) {
   try {
     return Result$Ok(target.insertAdjacentHTML(position, element));
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -77,7 +77,7 @@ export function insertAdjacentText(target, position, element) {
   try {
     return Result$Ok(target.insertAdjacentText(position, element));
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -102,7 +102,7 @@ export async function requestFullscreen(element) {
     await element.requestFullscreen();
     return Result$Ok();
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 

@@ -4,7 +4,7 @@ export async function showDirectoryPicker() {
   try {
     return Result$Ok(await window.showDirectoryPicker());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -16,7 +16,7 @@ export async function getDirectoryHandle(directoryHandle, name, create) {
   try {
     return Result$Ok(await directoryHandle.getDirectoryHandle(name, { create }));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -24,7 +24,7 @@ export async function getFileHandle(directoryHandle, name, create) {
   try {
     return Result$Ok(await directoryHandle.getFileHandle(name, { create }));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -32,7 +32,7 @@ export async function removeEntry(directoryHandle, name, recursive) {
   try {
     return Result$Ok(await directoryHandle.removeEntry(name, { recursive }));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -49,7 +49,7 @@ export async function allEntries(directoryHandle) {
     }
     return Result$Ok([dirs, files]);
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -57,7 +57,7 @@ export async function showOpenFilePicker() {
   try {
     return Result$Ok(await window.showOpenFilePicker());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -65,7 +65,7 @@ export async function showSaveFilePicker() {
   try {
     return Result$Ok(await window.showSaveFilePicker());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -73,7 +73,7 @@ export async function getFile(fileHandle) {
   try {
     return Result$Ok(await fileHandle.getFile());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -81,7 +81,7 @@ export async function createWritable(fileHandle) {
   try {
     return Result$Ok(await fileHandle.createWritable());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -89,7 +89,7 @@ export async function write(writableStream, bitArray) {
   try {
     return Result$Ok(await writableStream.write(bitArray.rawBuffer));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -97,6 +97,6 @@ export async function close(writableStream) {
   try {
     return Result$Ok(await writableStream.close());
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }

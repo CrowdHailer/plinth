@@ -14,7 +14,7 @@ export async function estimate(storageManager) {
     const { quota, usage } = await storageManager.estimate()
     return Result$Ok([quota, usage])
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -22,7 +22,7 @@ export async function getDirectory(storageManager) {
   try {
     return Result$Ok(await storageManager.getDirectory())
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -30,7 +30,7 @@ export async function persist(storageManager) {
   try {
     return Result$Ok(await storageManager.persist())
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -38,6 +38,6 @@ export async function persisted(storageManager) {
   try {
     return Result$Ok(await storageManager.persisted())
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }

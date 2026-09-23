@@ -72,6 +72,6 @@ export async function exitFullscreen(document) {
   try {
     return Result$Ok(await document.exitFullscreen())
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }

@@ -41,7 +41,7 @@ export async function requestWakeLock() {
   try {
     return Result$Ok(await window.navigator.wakeLock.request("screen"));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -119,7 +119,7 @@ export function open(url, target, features) {
   try {
     return Result$Ok(window.open(url, target, features));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -147,7 +147,7 @@ export function eval_(string) {
   try {
     return Result$Ok(eval(string));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -155,6 +155,6 @@ export async function import_(string) {
   try {
     return Result$Ok(await import(string));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }

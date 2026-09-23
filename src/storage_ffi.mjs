@@ -11,7 +11,7 @@ export function localStorage() {
       return Result$Error("localStorage is not available");
     }
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -25,7 +25,7 @@ export function sessionStorage() {
       return Result$Error("sessionStorage is not available");
     }
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -48,7 +48,7 @@ export function getItem(storage, keyName) {
     const option = value === null ? Option$None() : Option$Some(value);
     return Result$Ok(option);
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 
@@ -57,7 +57,7 @@ export function setItem(storage, keyName, keyValue) {
     storage.setItem(keyName, keyValue);
     return Result$Ok(null);
   } catch (error) {
-    return Result$Error(`${error}`);
+    return Result$Error(String(error));
   }
 }
 

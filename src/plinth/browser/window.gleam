@@ -35,7 +35,7 @@ pub type WakeLockSentinal
 
 // part of the navigator API as navigators are not valuable to pass around moved to window module
 @external(javascript, "../../window_ffi.mjs", "requestWakeLock")
-pub fn request_wake_lock() -> Promise(Result(WakeLockSentinal, Nil))
+pub fn request_wake_lock() -> Promise(Result(WakeLockSentinal, String))
 
 @external(javascript, "../../window_ffi.mjs", "location")
 pub fn location(window: Window) -> Location

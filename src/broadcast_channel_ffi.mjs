@@ -4,7 +4,7 @@ export function new_(channelName) {
   try {
     return Result$Ok(new BroadcastChannel(channelName));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 
@@ -12,7 +12,7 @@ export function postMessage(worker, message) {
   try {
     return Result$Ok(worker.postMessage(message));
   } catch (error) {
-    return Result$Error(error.toString());
+    return Result$Error(String(error));
   }
 }
 

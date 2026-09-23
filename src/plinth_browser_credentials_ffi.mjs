@@ -34,7 +34,7 @@ export function parseCreationOptionsFromJSON(options) {
   try {
     return Result$Ok(globalThis.PublicKeyCredential.parseCreationOptionsFromJSON(options))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -42,7 +42,7 @@ export function parseRequestOptionsFromJSON(options) {
   try {
     return Result$Ok(globalThis.PublicKeyCredential.parseRequestOptionsFromJSON(options))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -104,7 +104,7 @@ export async function createForPublicKey(container, options) {
   try {
     return Result$Ok(await container.create({ publicKey: options }))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }
 
@@ -124,6 +124,6 @@ export async function getForPublicKey(container, options) {
   try {
     return Result$Ok(await container.get({ publicKey: options }))
   } catch (error) {
-    return Result$Error(`${error}`)
+    return Result$Error(String(error))
   }
 }

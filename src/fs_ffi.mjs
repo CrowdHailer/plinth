@@ -5,7 +5,7 @@ export function readFileSync(path) {
   try {
     return Result$Ok(fs.readFileSync(path, "utf8"))
   } catch (error) {
-    return Result$Error(error.toString())
+    return Result$Error(String(error))
   }
 }
 
@@ -13,6 +13,6 @@ export function writeFileSync(path, content) {
   try {
     return Result$Ok(fs.writeFileSync(path, content))
   } catch (error) {
-    return Result$Error(error.toString())
+    return Result$Error(String(error))
   }
 }

@@ -62,7 +62,7 @@ export function respondWith(event, response) {
   try {
     return Result$Ok(event.respondWith(response))
   } catch (error) {
-    return Result$Error(error.toString())
+    return Result$Error(String(error))
   }
 }
 
@@ -90,7 +90,7 @@ export async function register(scriptURL) {
   try {
     return Result$Ok(await navigator.serviceWorker.register(scriptURL))
   } catch (error) {
-    return Result$Error(error.toString())
+    return Result$Error(String(error))
   }
 }
 
@@ -139,4 +139,3 @@ export function redirectResponse(url) {
 export function okResponse(body) {
   return new Response(body)
 }
-
