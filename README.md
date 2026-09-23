@@ -31,6 +31,39 @@ A Web API belongs in `plinth/browser` even if it is also implemented by NodeJs o
 
 **NodeJS** this library includes bindings to nodejs APIs, these will move to a separate library before 1.0 is released.
 
+### Fetching globals
+
+JavaScript API entry points are often a singleton object on `window` that may or may not be present depending on the API being implemented.
+This library separates retrieving this singleton (feature-detection) from using it.
+
+Name the Gleam function that fetches the current global's API object `get()`, or `get_<name>()` if multiple exist in a single Web API.
+The object's module contains this function, not the `window` or `navigator`.
+If fetching the object cannot throw, return `Result(t, Nil)`, if it can throw return `Result(t, String)`.
+For example, accessing `localStorage` can throw `SecurityError`.
+
+The JavaScript implementation accesses the singleton through `globalThis` and checks the `instanceof` the value.
+The native object is returned and subsequent operations take it as an argument.
+When mapping a JavaScript method to a Gleam function the receiver should be the first argument.
+
+Example of global fetching that may throw an exception:
+
+```js
+import { Result$Ok, Result$Error } from "./gleam.mjs";
+
+export function sessionStorage() {
+  // accessing .sessionStorage can throw `SecurityError`
+  try {
+    const storage = globalThis.sessionStorage;
+    if (globalThis.Storage && storage instanceof globalThis.Storage) {
+      return Result$Ok(storage);
+    } else {
+      return Result$Error("sessionStorage is not available");
+    }
+  } catch (error) {
+    return Result$Error(String(error));
+  }
+}
+```
 
 ### Error handling
 
@@ -42,7 +75,7 @@ Use a custom Gleam type for structured errors or the string representation of th
 Use `String(error)` to convert the thrown value to a string, see [spec](https://tc39.es/ecma262/multipage/text-processing.html#sec-string-constructor-string-value).
 Template interpolation `${error}` throws in the case of symbols and `error.toString()` will fail certain cases.
 
-```js
+```js is named 
 import { Result$Ok, Result$Error } from "./gleam.mjs";
 
 export function insertAdjacentElement(target, position, element) {
