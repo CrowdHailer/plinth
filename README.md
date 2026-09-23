@@ -16,6 +16,22 @@ It does not:
 
 The following design guidelines should be followed if adding new APIs.
 
+### Module placement
+
+Place bindings according to the specification that defines the API:
+
+- Web APIs belong in `plinth/browser`.
+Use the defining Web specification as the source of truth: see the [WHATWG standards](https://spec.whatwg.org/) and [W3C standards and drafts](https://www.w3.org/TR/).
+Web APIs are defined across multiple specifications, rather than a single Web API standard.
+- ECMAScript APIs belong in `plinth/javascript`.
+The source of truth is the [ECMAScript language specification (ECMA-262)](https://tc39.es/ecma262/).
+
+Runtime availability does not determine placement.
+A Web API belongs in `plinth/browser` even if it is also implemented by NodeJs or other JS runtime.
+
+**NodeJS** this library includes bindings to nodejs APIs, these will move to a separate library before 1.0 is released.
+
+
 ### Error handling
 
 Gleam does not expect to handle exceptions and all fallible functions must return a `Result`.
