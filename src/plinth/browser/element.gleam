@@ -5,6 +5,7 @@ import gleam/javascript/promise.{type Promise}
 import plinth/browser/dom_rect.{type DomRect}
 import plinth/browser/dom_token_list.{type DomTokenList}
 import plinth/browser/event.{type Event}
+import plinth/browser/window_proxy.{type WindowProxy}
 
 pub type Element
 
@@ -275,3 +276,7 @@ pub fn matches(element: Element, selector: String) -> Bool
 /// Binding of [`Element.localName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/localName).
 @external(javascript, "../../element_ffi.mjs", "localName")
 pub fn local_name(element: Element) -> String
+
+/// The window of an element's nested browsing context, such as an iframe's.
+@external(javascript, "../../element_ffi.mjs", "contentWindow")
+pub fn content_window(element: Element) -> Result(WindowProxy, Nil)

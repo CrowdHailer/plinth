@@ -264,3 +264,11 @@ export function matches(element, selector) {
 export function localName(element) {
   return element.localName;
 }
+
+export function contentWindow(element) {
+  const contentWindow = element.contentWindow;
+  if (contentWindow != null) {
+    return Result$Ok(contentWindow);
+  }
+  return Result$Error();
+}

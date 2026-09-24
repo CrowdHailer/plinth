@@ -102,3 +102,10 @@ export function parentElement(element) {
   return Result$Error();
 }
 ```
+
+### Avoid indexed and named access
+
+The window object allows access like `window[number]` for child browsing contexts and `window[string]` is legacy name lookup..
+These are sugar with subtle bugs, for example string lookup checks multiple places; global variables, DOM nodes and frame names.
+Do not implement bindings to these.
+Instead users should rely on combining `document.querySelector('[name="foo"]')` and accessing the returned elements content window.
