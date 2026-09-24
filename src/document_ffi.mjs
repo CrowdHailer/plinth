@@ -75,3 +75,8 @@ export async function exitFullscreen(document) {
     return Result$Error(String(error))
   }
 }
+
+export function documentElement(document) {
+  const element = document.documentElement;
+  return element == null ? Result$Error() : Result$Ok(element);
+}

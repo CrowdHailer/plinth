@@ -16,6 +16,10 @@ export function getAttribute(element, name) {
   return Result$Error();
 }
 
+export function hasAttribute(element, name) {
+  return element.hasAttribute(name);
+}
+
 export function parentElement(element) {
   let parent = element.parentElement;
   if (parent !== null) {
@@ -41,8 +45,24 @@ export function addEventListener(element, type, listener) {
   return element.addEventListener(type, listener);
 }
 
+export function innerHTML(element) {
+  try {
+    return Result$Ok(element.innerHTML);
+  } catch (error) {
+    return Result$Error(String(error));
+  }
+}
+
 export function setInnerHTML(element, content) {
   element.innerHTML = content;
+}
+
+export function outerHTML(element) {
+  try {
+    return Result$Ok(element.outerHTML);
+  } catch (error) {
+    return Result$Error(String(error));
+  }
 }
 
 export function textContent(element) {
@@ -239,4 +259,8 @@ export function querySelectorAll(element, selector) {
 
 export function matches(element, selector) {
   return element.matches(selector);
+}
+
+export function localName(element) {
+  return element.localName;
 }

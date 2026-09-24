@@ -31,14 +31,52 @@ pub fn get_attribute(element: Element, name: String) -> Result(String, Nil)
 @external(javascript, "../../element_ffi.mjs", "setAttribute")
 pub fn set_attribute(element: Element, name: String, value: String) -> Nil
 
+/// Binding of [`Element.hasAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute).
+@external(javascript, "../../element_ffi.mjs", "hasAttribute")
+pub fn has_attribute(element: Element, name: String) -> Bool
+
 @external(javascript, "../../element_ffi.mjs", "removeAttribute")
 pub fn remove_attribute(element: Element, name: String) -> Nil
 
 @external(javascript, "../../element_ffi.mjs", "getBoundingClientRect")
 pub fn get_bounding_client_rect(element: Element) -> DomRect
 
+/// Serialized HTML or XML of the element's descendants.
+///
+/// Reading this normally succeeds in an HTML document. In an XML document
+/// (including XHTML or standalone SVG), the getter is specified to throw
+/// `InvalidStateError` if the contents cannot be serialized as well-formed XML.
+/// This can happen after DOM manipulation introduces XML-invalid characters or
+/// comments containing `--`.
+/// The owning document determines the serialization format, so inline SVG in an
+/// HTML document uses HTML serialization.
+///
+/// See the [HTML Standard](https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#the-innerhtml-property)
+/// and [XML serialization rules](https://w3c.github.io/DOM-Parsing/#xml-serialization).
+///
+/// Binding of [`Element.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML).
+@external(javascript, "../../element_ffi.mjs", "innerHTML")
+pub fn inner_html(element: Element) -> Result(String, String)
+
 @external(javascript, "../../element_ffi.mjs", "setInnerHTML")
 pub fn set_inner_html(element: Element, value: String) -> Nil
+
+/// Serialized HTML or XML of the element and its descendants.
+///
+/// Reading this normally succeeds in an HTML document. In an XML document
+/// (including XHTML or standalone SVG), the getter is specified to throw
+/// `InvalidStateError` if the element cannot be serialized as well-formed XML.
+/// This can happen after DOM manipulation introduces XML-invalid characters or
+/// comments containing `--`.
+/// The owning document determines the serialization format, so inline SVG in an
+/// HTML document uses HTML serialization.
+///
+/// See the [HTML Standard](https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#the-outerhtml-property)
+/// and [XML serialization rules](https://w3c.github.io/DOM-Parsing/#xml-serialization).
+///
+/// Binding of [`Element.outerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML).
+@external(javascript, "../../element_ffi.mjs", "outerHTML")
+pub fn outer_html(element: Element) -> Result(String, String)
 
 @external(javascript, "../../element_ffi.mjs", "setInnerText")
 pub fn set_inner_text(element: Element, value: String) -> Nil
@@ -232,3 +270,8 @@ pub fn class_list(element: Element) -> DomTokenList
 /// Binding of [`Element.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches).
 @external(javascript, "../../element_ffi.mjs", "matches")
 pub fn matches(element: Element, selector: String) -> Bool
+
+/// The local part of the element's qualified name, lowercase for HTML elements.
+/// Binding of [`Element.localName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/localName).
+@external(javascript, "../../element_ffi.mjs", "localName")
+pub fn local_name(element: Element) -> String

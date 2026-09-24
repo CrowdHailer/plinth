@@ -63,3 +63,8 @@ pub fn fullscreen_element(document: Document) -> Result(Element, Nil)
 /// exitFullscreen() requests that the element on this document which is currently being presented in fullscreen mode be taken out of fullscreen mode, restoring the previous state of the screen.
 @external(javascript, "../../document_ffi.mjs", "exitFullscreen")
 pub fn exit_fullscreen(document: Document) -> Promise(Result(Nil, String))
+
+/// The root element of the document, `<html>` in an HTML document.
+/// Binding of [`Document.documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement).
+@external(javascript, "../../document_ffi.mjs", "documentElement")
+pub fn document_element(document: Document) -> Result(Element, Nil)
